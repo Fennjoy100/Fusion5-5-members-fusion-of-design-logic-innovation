@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Movie Details</title>
+  <link rel="stylesheet" href="moviedetails.css">
+</head>
+
+<body>
+
+ 
+<!-- NAVBAR -->
+  <nav class="navbar"> <!-- Logo -->
+    <div class="logo">
+      <span class="logo-main">THIRAI</span><span class="logo-sub">VERSE</span>
+    </div> <!-- Menu -->
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="movies.html#nowShowing">In Cinemas</a></li>
+      <li><a href="movies.html#upcoming">Coming Soon</a></li>
+    </ul> <!-- Right Side -->
+    <div class="nav-right"> <input type="text" id="searchInput"  placeholder="Search movies...">
+  </nav>
+
+  
+  <div class="details-container">
+
+    <img id="poster" class="poster">
+
+    <div class="info">
+      <h1 id="title"></h1>
+      <p id="lang"></p>
+      <p id="release"></p>
+
+      <!-- Tabs -->
+      <div class="tabs">
+        <span class="tab active" data-tab="synopsis">Synopsis</span>
+        <span class="tab" data-tab="cast">Cast</span>
+        <span class="tab" data-tab="videos">Videos</span>
+        <span class="tab" data-tab="posters">Posters</span>
+      </div>
+
+      <!-- Tab Contents -->
+      <div id="synopsis" class="tab-content active"></div>
+      <div id="cast" class="tab-content"></div>
+      <div id="videos" class="tab-content"></div>
+      <div id="posters" class="tab-content"></div>
+
+      <p id="genre"></p>
+    </div>
+
+  </div>
+
+  <script src="moviesData.js"></script>
+  <script src="moviedetails.js"></script>
+
+</body>
+</html>

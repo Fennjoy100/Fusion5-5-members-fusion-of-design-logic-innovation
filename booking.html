@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Booking Page</title>
+  <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar"> <!-- Logo -->
+    <div class="logo">
+      <span class="logo-main">THIRAI</span><span class="logo-sub">VERSE</span>
+    </div> <!-- Menu -->
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="movies.html#nowShowing">In Cinemas</a></li>
+      <li><a href="movies.html#upcoming">Coming Soon</a></li>
+    </ul> <!-- Right Side -->
+    <div class="nav-right"> <input type="text" id="searchInput"  placeholder="Search movies..."></div>
+  </nav>
+
+  <!-- Main Wrapper -->
+  <div class="main-wrapper">
+    <div class="container">
+
+      <!-- 🎬 Movie Info (DYNAMIC) -->
+      <div class="movie-info">
+        <img id="moviePoster" class="poster">
+
+        <div class="movie-text">
+          <h2 id="movieName"></h2>
+
+          <p id="movieMeta">
+            <span id="movieCert"></span> |
+            <span id="movieLang"></span> |
+            <span id="movieDuration"></span>
+          </p>
+
+
+        </div>
+      </div>
+
+      <!-- 📅 Date Selection -->
+      <div class="date-scroll" id="dateContainer"></div>
+
+     
+
+      <!-- 🎭 Theater -->
+      <div class="theater">
+        <h3>PVR Cinemas : Brookefields Mall</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+
+      <div class="theater">
+        <h3>KG Cinemas</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+
+      <div class="theater">
+        <h3>Karpagam Theatres</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+      
+      <div class="theater">
+        <h3>INOX Prozone Mall</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+    <div class="theater">
+        <h3>SENTHIL KUMARAN THEATRE</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+          <div class="theater">
+        <h3>Sri Murugan Cinemas A/C 4K Dolby Atmos</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+            <div class="theater">
+        <h3>Sarvam Cinemas</h3>
+
+        <div class="show-times">
+          <button data-time="10:00 AM">10:00 AM</button>
+          <button data-time="01:30 PM">01:30 PM</button>
+          <button data-time="05:55 PM">05:55 PM</button>
+          <button data-time="09:30 PM">09:30 PM</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+   <script src="moviesData.js"></script>  <!-- ADD THIS -->
+
+  <script src="booking.js"></script>
+
+</body>
+</html>

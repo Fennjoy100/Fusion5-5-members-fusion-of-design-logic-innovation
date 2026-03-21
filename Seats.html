@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Seat Selection</title>
+  <link rel="stylesheet" href="Seats.css">
+</head>
+
+<body>
+  <!-- NAVBAR -->
+  <nav class="navbar"> <!-- Logo -->
+    <div class="logo">
+      <span class="logo-main">THIRAI</span><span class="logo-sub">VERSE</span>
+    </div> <!-- Menu -->
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="movies.html#nowShowing">In Cinemas</a></li>
+      <li><a href="movies.html#upcoming">Coming Soon</a></li>
+    </ul> <!-- Right Side -->
+    <div class="nav-right"> <input type="text" id="searchInput"  placeholder="Search movies...">
+  </nav>
+
+<!-- 🎬 HEADER -->
+<div class="header">
+  <h2 id="movieTitle"></h2>
+  <p id="showDetails"></p>
+  <p id="seatPrice"></p>
+</div>
+
+<h2 class="title">Select Seats</h2>
+
+<!-- 🎬 CURVED SCREEN -->
+<div class="screen-wrapper">
+  <div class="screen-curve"></div>
+  <p class="screen-text">SCREEN THIS WAY</p>
+</div>
+
+<!-- 💺 SEATS -->
+<div id="seatContainer" class="seat-container"></div>
+
+<!-- 🔥 LEGEND -->
+<div class="legend">
+  <span><div class="box available"></div> Available</span>
+  <span><div class="box selected"></div> Selected</span>
+  <span><div class="box occupied"></div> Reserved</span>
+</div>
+
+<!-- 🔥 BOTTOM BAR -->
+<div class="bottom-bar">
+  <div class="left">
+    <p id="seatCount">0 Seats Selected</p>
+    <p>Seats: <span id="selectedSeats">None</span></p>
+  </div>
+
+  <div class="right">
+    <p>Total: ₹<span id="totalPrice">0</span></p>
+    <button id="payBtn">Go to Checkout</button>
+  </div>
+</div>
+
+<script src="moviesData.js"></script>
+<script src="Seats.js"></script>
+
+</body>
+</html>

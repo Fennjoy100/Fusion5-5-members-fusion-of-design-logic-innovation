@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Payment</title>
+  <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+<!-- NAVBAR -->
+  <nav class="navbar"> <!-- Logo -->
+    <div class="logo">
+      <span class="logo-main">THIRAI</span><span class="logo-sub">VERSE</span>
+    </div> <!-- Menu -->
+    <ul class="menu">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="movies.html">Movies</a></li>
+      <li><a href="movies.html#nowShowing">In Cinemas</a></li>
+      <li><a href="movies.html#upcoming">Coming Soon</a></li>
+    </ul> <!-- Right Side -->
+    <div class="nav-right"> <input type="text" id="searchInput"  placeholder="Search movies...">
+  </nav>
+<h2>Review your booking</h2>
+
+<div class="container">
+
+  <!-- LEFT -->
+  <div class="left">
+
+    <h2 id="movieName"></h2>
+    <p id="movieLang"></p>
+    <p id="theatreName"></p>
+
+ 
+    <div class="booking">
+      <p id="dateTime"></p>
+      <p>Seats: <span id="seatList"></span></p>
+    </div>
+
+  </div>
+
+  <!-- RIGHT -->
+  <div class="right">
+
+    <h3>Payment Summary</h3>
+
+    <p><span>Tickets</span> <span>₹<span id="ticketAmount"></span></span></p>
+    <p><span>Taxes</span> <span>₹<span id="taxAmount"></span></span></p>
+
+    <hr>
+
+    <p class="total"><span>Total</span> <span>₹<span id="finalTotal"></span></span></p>
+
+    <button id="payBtn">Proceed to Pay</button>
+
+  </div>
+
+</div>
+<!-- SUCCESS POPUP -->
+<div id="successPopup" class="success-modal">
+  <div class="success-box">
+    <h2>🎉 Payment Successful!</h2>
+    <p>Enjoy your movie 🍿</p>
+    <button onclick="goHome()">OK</button>
+  </div>
+</div>
+<script src="payment.js"></script>
+
+</body>
+</html>
