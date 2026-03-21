@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Settings | ShopEasy</title>
+  <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">ShopEasy</div>
+  
+  <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-container" id="navContainer">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-controls" id="navControls">
+    <button id="micBtn" class="nav-btn" onclick="toggleVoice()">
+      <span class="icon">🎤</span>
+      <span class="btn-text">Voice Search</span>
+    </button>
+    <div class="translator">
+      <select id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">🇺🇸 English</option>
+        <option value="ta">🇮🇳 Tamil</option>
+        <option value="ml">🇮🇳 Malayalam</option>
+        <option value="hi">🇮🇳 Hindi</option>
+        <option value="es">🇪🇸 Spanish</option>
+      </select>
+    </div>
+    <button class="nav-btn" onclick="speakProducts()">
+      <span class="icon">🔊</span>
+      <span class="btn-text">Listen List</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <h1>Settings</h1>
+  <p>Customize your shopping experience.</p>
+</section>
+
+<div class="settings-container" style="max-width: 600px; margin: 0 auto; background: var(--card-bg); padding: 2rem; border-radius: 20px; border: 1px solid var(--glass-border);">
+  <h2 style="margin-bottom: 2rem;">Appearance</h2>
+  
+  <div class="setting-item" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+    <span>Theme Mode</span>
+    <select id="themeSelect" onchange="changeTheme(this.value)" style="padding: 0.5rem 1rem; border-radius: 10px; background: #1e293b; color: white; border: 1px solid var(--glass-border);">
+      <option value="dark">Premium Dark</option>
+      <option value="light">Crisp Light</option>
+      <option value="normal">Classic Normal</option>
+    </select>
+  </div>
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

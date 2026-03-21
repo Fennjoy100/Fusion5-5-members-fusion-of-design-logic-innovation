@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ShopEasy | Premium E-Commerce</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<nav>
+  <div class="logo">ShopEasy</div>
+  
+  <button class="menu-toggle" id="menuToggle" onclick="toggleMenu()">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
+
+  <div class="nav-container" id="navContainer">
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="collections.html">Collections</a></li>
+      <li><a href="contactus.html">Contact Us</a></li>
+      <li><a href="settings.html">Settings</a></li>
+    </ul>
+  </div>
+
+  <div class="nav-controls" id="navControls">
+    <!-- Voice Search Button -->
+    <button id="micBtn" class="nav-btn" onclick="toggleVoice()">
+      <span class="icon">🎤</span>
+      <span class="btn-text">Voice Search</span>
+    </button>
+
+    <!-- Language Selector -->
+    <div class="translator">
+      <select id="langSelect" onchange="changeLanguage(this.value)">
+        <option value="en">🇺🇸 English</option>
+        <option value="ta">🇮🇳 Tamil</option>
+        <option value="ml">🇮🇳 Malayalam</option>
+        <option value="hi">🇮🇳 Hindi</option>
+        <option value="es">🇪🇸 Spanish</option>
+      </select>
+    </div>
+
+    <!-- Speaker Button -->
+    <button class="nav-btn" onclick="speakProducts()">
+      <span class="icon">🔊</span>
+      <span class="btn-text">Listen List</span>
+    </button>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="search-hint">Try saying "I need a laptop" or "Show me watches"</div>
+  <h1>Experience Premium Shopping</h1>
+  <p>Find the latest technology and style, curated just for you. Our voice-assisted search makes finding things effortless.</p>
+</section>
+
+<div id="products">
+  <!-- Laptop -->
+  <div class="product-card" data-name="laptop">
+    <div class="product-image">💻</div>
+    <h3>Modern Laptop Pro</h3>
+    <div class="product-price">$1,299.00</div>
+    <button class="buy-btn">Add to Cart</button>
+  </div>
+
+  <!-- Phone -->
+  <div class="product-card" data-name="phone">
+    <div class="product-image">📱</div>
+    <h3>X-Phone Ultra</h3>
+    <div class="product-price">$999.00</div>
+    <button class="buy-btn">Add to Cart</button>
+  </div>
+
+  <!-- Watch -->
+  <div class="product-card" data-name="watch">
+    <div class="product-image">⌚</div>
+    <h3>SmartWatch Horizon</h3>
+    <div class="product-price">$349.00</div>
+    <button class="buy-btn">Add to Cart</button>
+  </div>
+</div>
+
+<!-- Transcription Overlay -->
+<div id="transcription">Listening...</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
