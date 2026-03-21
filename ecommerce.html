@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ecommerce</title>
+
+    <!-- Google fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Awesome font -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
+        integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Linking CSS -->
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <!-- Navbar -->
+    <div>
+
+    </div>
+
+    <!-- Side Navbar -->
+    <div>
+
+    </div>
+
+    <!-- order Overlay -->
+    <div class="orderoverlay"></div>
+    <div class="orderpopup">
+        <img src="./images/orderconfirmed.png" class="orderconfirmed">
+        <h1 id="orderplaced">Order Placed</h1>
+        <button class="backtoshop">Back to Shop</button>
+    </div>
+
+
+    <!-- Add to cart and login  -->
+    <div class="user-action">
+        <div class="user-action_sub">
+            <div>
+                <button class="darkbtn">Dark Mode</button>
+            </div>
+            <div class="user-action_sub_cart">
+                <img class="cart" src="./images/cart.png">
+                <p class="cart-count">0</p>
+            </div>
+            <div>
+                <img class="login" src="./images/Login.png">
+            </div>
+        </div>
+    </div>
+
+    <!-- cart slidebar -->
+    <div class="cartslidebar">
+        <p class="cartslidebar_close">X</p>
+        <div class="order">
+            <button class="orderbtn">Order Now</button>
+        </div>
+        <div class="cartslidebar_container"></div>
+    </div>
+
+    <!-- Offer -->
+    <div class="offer">
+        <div class="offer_img">
+            <img src="./images/offerimage.png">
+        </div>
+        <div class="offer_details">
+            <h1>Big Savings on Top Gadgets!</h2>
+                <p>Upgrade your tech with the latest </p>
+                <p>smartphones, laptops, and headphones </p>
+                <p>at unbeatable prices.</p>
+                <div id="shopnowbtn">
+                    <button>Shop Now</button>
+                </div>
+        </div>
+    </div>
+
+    <!-- Products -->
+    <div class="Products_main">
+        <div class="Products_section1">
+            <div>
+                <h1>Categories</h1>
+                <p><input type="checkbox" name="Product" value="mobile">Mobile Phones</p>
+                <p><input type="checkbox" name="Product" value="electronic">Electronics</p>
+                <p><input type="checkbox" name="Product" value="home">Home Appliances</p>
+                <p><input type="checkbox" name="Product" value="fashion">Fashion</p>
+                <p><input type="checkbox" name="Product" value="footwear">Footwear</p>
+                <p><input type="checkbox" name="Product" value="bag">Bags & Accessories</p>
+                <p><input type="checkbox" name="Product" value="wearable">Wearables</p>
+            </div>
+
+            <div>
+                <h1>Price Range</h1>
+                <p><input type="checkbox" name="Product" value="100">Under ₹1,000</p>
+                <p><input type="checkbox" name="Product" value="1000">₹1,000 - ₹10,000</p>
+                <p><input type="checkbox" name="Product" value="10000">₹10,000 - ₹50,000</p>
+                <p><input type="checkbox" name="Product" value="50000">₹50,000 - ₹1,00,000</p>
+                <p><input type="checkbox" name="Product" value="100000">Above ₹1,00,000</p>
+            </div>
+
+            <div>
+                <h1>Ratings</h1>
+                <p><input type="checkbox" name="Product" value="5">5★ </p>
+                <p><input type="checkbox" name="Product" value="4">4★ </p>
+                <p><input type="checkbox" name="Product" value="3">3★ </p>
+                <p><input type="checkbox" name="Product" value="2">2★ </p>
+            </div>
+
+            <div>
+                <h1>Brand</h1>
+                <p><input type="checkbox" name="Product" value="apple">Apple</p>
+                <p><input type="checkbox" name="Product" value="samsung">Samsung</p>
+                <p><input type="checkbox" name="Product" value="oneplus">OnePlus</p>
+                <p><input type="checkbox" name="Product" value="whirlpool">Whirlpool</p>
+                <p><input type="checkbox" name="Product" value="hp">HP</p>
+                <p><input type="checkbox" name="Product" value="fastrack">Fastrack</p>
+                <p><input type="checkbox" name="Product" value="bosch">Bosch</p>
+            </div>
+
+            <div>
+                <h1>Color</h1>
+                <p><input type="checkbox" name="Product" value="black">Black</p>
+                <p><input type="checkbox" name="Product" value="white">White</p>
+                <p><input type="checkbox" name="Product" value="blue">Blue</p>
+                <p><input type="checkbox" name="Product" value="grey">Grey</p>
+                <p><input type="checkbox" name="Product" value="green">Green</p>
+            </div>
+
+            <div>
+                <h1>Availability</h1>
+                <p><input type="checkbox" name="Product" value="new">New Arivals</p>
+            </div>
+        </div>
+        <div class="Products_section2">
+            <div class="Products_search">
+                <div class="Products_search-sub">
+                    <i class="fa-solid fa-magnifying-glass searchicon" style="color: rgb(0, 0, 0);"></i>
+                    <input placeholder="Search here...." id="Search">
+                </div>
+            </div>
+            <div class="Products_display">
+                <div class="Products" data-category="mobile 100000 3 apple new iphone">
+                    <img src="./images/Productimage1.jpg">
+                    <h2>iPhone 17 Pro Max 1TB</h2>
+                    <p>3.5 ⭐⭐⭐</p>
+                    <h3>₹1,74,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="mobile 100000 5 samsung blue phone">
+                    <img src="./images/Productimage2.jpg">
+                    <h2>Samsung S26 Ultra</h2>
+                    <p>5 ⭐⭐⭐⭐⭐</p>
+                    <h3>₹1,39,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="mobile 50000 5 oneplus green phone">
+                    <img src="./images/Productimage3.jpg">
+                    <h2>OnePlus Nord 5 512GB</h2>
+                    <p>5 ⭐⭐⭐⭐⭐</p>
+                    <h3>₹69,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="home 10000 2 whirlpool blue fridge refrigerator">
+                    <img src="./images/Productimage4.jpg">
+                    <h2>Whirlpool 184 Liter 5S</h2>
+                    <p>2.5 ⭐⭐</p>
+                    <h3>₹14,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="home 10000 4 bosch white washing">
+                    <img src="./images/Productimage5.jpg">
+                    <h2>Bosch 7 kg, 5 Star Washing </h2>
+                    <p>4.6 ⭐⭐⭐⭐</p>
+                    <h3>₹27,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="home 1000 5 black Microwave oven">
+                    <img src="./images/Productimage6.jpg">
+                    <h2>Panasonic Microwave Oven </h2>
+                    <p>5 ⭐⭐⭐⭐⭐</p>
+                    <h3>₹7,590</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="fashion wearable 100 2 blue new tshirt">
+                    <img src="./images/Productimage7.jpg">
+                    <h2>Lymio Nyka Polo T Shirt</h2>
+                    <p>2.5 ⭐⭐</p>
+                    <h3>₹450</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="fashion wearable 1000 4 blue jean phant">
+                    <img src="./images/Productimage8.jpg">
+                    <h2>Men's Strechable Cotton Jean</h2>
+                    <p>4.9 ⭐⭐⭐⭐</p>
+                    <h3>₹1,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="fashion footwear wearable 1000 3 white shoes">
+                    <img src="./images/Productimage9.jpg">
+                    <h2>Mens Ironman Shoes</h2>
+                    <p>3.9 ⭐⭐⭐</p>
+                    <h3>₹1,200</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="bag wearable 100 4 black new">
+                    <img src="./images/Productimage10.jpg">
+                    <h2>Omega backpack</h2>
+                    <p>4 ⭐⭐⭐⭐</p>
+                    <h3>₹900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="fashion bag wearable 1000 4 green">
+                    <img src="./images/Productimage11.jpg">
+                    <h2>Women's Sling Bag </h2>
+                    <p>4.5 ⭐⭐⭐⭐</p>
+                    <h3>₹1,350</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="bag wearable 1000 2 grey">
+                    <img src="./images/Productimage12.jpg">
+                    <h2>COSMUS Everest grey</h2>
+                    <p>2.9 ⭐⭐</p>
+                    <h3>₹2,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="electronic 1000 4 grey new headphone">
+                    <img src="./images/Productimage13.jpg">
+                    <h2>Zebronics Headphone</h2>
+                    <p>4.7 ⭐⭐⭐⭐</p>
+                    <h3>₹2,400</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="electronic 50000 5 black camera">
+                    <img src="./images/Productimage14.jpg">
+                    <h2>Canon V7 R Camera</h2>
+                    <p>5 ⭐⭐⭐⭐⭐</p>
+                    <h3>₹75,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="electronic wearable 1000 3 fastrack black new watch">
+                    <img src="./images/Productimage15.jpg">
+                    <h2>Fastrack Smart Watch</h2>
+                    <p>3.5 ⭐⭐⭐</p>
+                    <h3>₹2,900</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+
+                <div class="Products" data-category="electronic 10000 5 hp white laptop">
+                    <img src="./images/Productimage16.jpg">
+                    <h2>HP 15S Gen 11 Laptop</h2>
+                    <p>5 ⭐⭐⭐⭐⭐</p>
+                    <h3>₹45,000</h3>
+                    <button class="Addtocart">Add to cart</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./script.js"></script>
+</body>
+
+</html>
