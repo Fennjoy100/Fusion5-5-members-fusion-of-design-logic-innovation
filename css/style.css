@@ -176,7 +176,7 @@ section { position:relative;overflow:hidden; }
 }
 .btn-ghost:hover { border-color:var(--gold);color:var(--gold);transform:translateY(-2px); }
 
-/* ══ 7. SECTION SHARED ══════════════════════════════════════ */
+/* 7. SECTION SHARED  */
 .section-head { text-align:center;margin-bottom:5rem; }
 .section-eye {
   font-family: var(--font-b);
@@ -203,7 +203,7 @@ section { position:relative;overflow:hidden; }
   font-weight: 300;
 }
 
-/* ══ 8. NAVBAR ══════════════════════════════════════════════ */
+/* 8. NAVBAR  */
 .navbar {
   position: fixed;top:0;left:0;right:0;z-index:1000;
   display: flex;align-items:center;justify-content:space-between;
@@ -550,7 +550,7 @@ section { position:relative;overflow:hidden; }
   animation:scrollPulse 2.4s ease-in-out infinite;
 }
 
-/* ══ 10. MARQUEE ════════════════════════════════════════════ */
+/* 10. MARQUEE  */
 .marquee-wrap {
   background: var(--gold);
   padding: 13px 0;
@@ -570,7 +570,7 @@ section { position:relative;overflow:hidden; }
 }
 .mdot { opacity:0.4; }
 
-/* ══ 11. SERVICES ═══════════════════════════════════════════ */
+/* 11. SERVICES  */
 .services {
   padding: var(--sec-py) 0;
   background: var(--bg-2);
@@ -762,7 +762,7 @@ section { position:relative;overflow:hidden; }
   color:var(--text-faint);
 }
 
-/* ══ 14. CTA ════════════════════════════════════════════════ */
+/*  14. CTA  */
 .cta-section {
   padding: var(--sec-py) 0;
   background: var(--bg-2);
@@ -788,7 +788,7 @@ section { position:relative;overflow:hidden; }
 }
 .cta-btns { display:flex;justify-content:center;gap:1rem;flex-wrap:wrap; }
 
-/* ══ 15. FOOTER ═════════════════════════════════════════════ */
+/*  15. FOOTER  */
 .footer {
   border-top: 1px solid var(--border-sub);
   background: var(--bg);
@@ -880,7 +880,7 @@ section { position:relative;overflow:hidden; }
   letter-spacing:0.2em;color:var(--gold);
 }
 
-/* ══ 16. MIC FAB ════════════════════════════════════════════ */
+/*  16. MIC FAB  */
 .mic-fab {
   position:fixed;bottom:2.5rem;right:2.5rem;z-index:900;
   width:56px;height:56px;border-radius:50%;
@@ -904,7 +904,7 @@ section { position:relative;overflow:hidden; }
 }
 .mic-pulse-2 { animation-delay:1s; }
 
-/* ══ 17. TOAST ══════════════════════════════════════════════ */
+/*  17. TOAST  */
 #toastContainer {
   position:fixed;bottom:2rem;left:50%;
   transform:translateX(-50%);z-index:9999;
@@ -930,7 +930,7 @@ section { position:relative;overflow:hidden; }
 .toast.error { border-left-color:#C0392B; }
 .toast.hide  { animation:toastOut 0.35s var(--ease) forwards; }
 
-/* ══ 18. SCROLL REVEAL ══════════════════════════════════════ */
+/*  18. SCROLL REVEAL  */
 .reveal {
   opacity:0;
   transition: opacity 0.9s var(--ease-out), transform 0.9s var(--ease-out);
@@ -962,7 +962,7 @@ section { position:relative;overflow:hidden; }
 .reveal-card[data-delay="2"] { transition-delay:0.28s; }
 .reveal-card[data-delay="3"] { transition-delay:0.42s; }
 
-/* ══ 19. KEYFRAMES ══════════════════════════════════════════ */
+/*  19. KEYFRAMES  */
 @keyframes fadeUp {
   from{opacity:0;transform:translateY(28px)}
   to{opacity:1;transform:translateY(0)}
@@ -999,7 +999,7 @@ section { position:relative;overflow:hidden; }
   *,*::before,*::after { animation-duration:0.01ms !important;transition-duration:0.01ms !important; }
 }
 
-/* ══ 20. RESPONSIVE ═════════════════════════════════════════ */
+/*  20. RESPONSIVE  */
 @media (max-width:1024px) {
   .services-grid { grid-template-columns:repeat(2,1fr); }
   .features-grid { grid-template-columns:repeat(2,1fr); }
