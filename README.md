@@ -1,4 +1,3 @@
-
 # Fusion 5 — Where Excellence Meets Experience
 
 A premium, multi-functional, and fully responsive web platform built using **HTML5, Vanilla CSS, and JavaScript**. This project integrates four distinct modules—Food Court, Ecommerce Shop, Movie Booking, and Voice Assistant—into a unified, high-end user experience.
