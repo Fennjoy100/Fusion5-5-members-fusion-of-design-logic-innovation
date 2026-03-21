@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Fusion 5 — Where Every Experience Meets Excellence. Food, Shopping, Movies & Voice in one premium platform.">
+  <title>Fusion 5 — Where Excellence Meets Experience</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,600&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- PRELOADER -->
+  <div class="preloader" id="preloader">
+    <div class="preloader-inner">
+      <div class="preloader-logo">
+        <svg width="60" height="60" viewBox="0 0 60 60">
+          <circle cx="30" cy="30" r="28" fill="none" stroke="#C9A84C" stroke-width="1" stroke-dasharray="4 3" class="pre-ring"/>
+          <text x="50%" y="54%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond" font-size="18" font-weight="300">F5</text>
+        </svg>
+      </div>
+      <div class="preloader-bar"><div class="preloader-fill"></div></div>
+    </div>
+  </div>
+
+  <!-- CURSOR -->
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-follower" id="cursorFollower"></div>
+
+  <!-- NAVBAR  -->
+  <header class="navbar" id="navbar" role="banner">
+    <!-- Logo -->
+    <a href="#home" class="nav-logo" aria-label="Fusion 5 Home">
+      <svg class="logo-svg" width="36" height="36" viewBox="0 0 36 36" aria-hidden="true">
+        <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5" class="logo-ring"/>
+        <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
+        <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="11" font-weight="400">F5</text>
+      </svg>
+      <div class="logo-text-wrap">
+        <span class="logo-name">FUSION 5</span>
+        <span class="logo-tagline">EXCELLENCE MEETS EXPERIENCE</span>
+      </div>
+    </a>
+
+    <!-- Nav Links -->
+    <nav class="nav-links" id="navLinks" role="navigation" aria-label="Main">
+      <a href="#home"     class="nav-link active" data-text="Home">Home</a>
+      <a href="#services" class="nav-link" data-text="Services">Services</a>
+      <a href="#features" class="nav-link" data-text="Features">Features</a>
+      <a href="pages/food.html"       class="nav-link" data-text="Food">Food</a>
+      <a href="pages/ecommerce.html"  class="nav-link" data-text="Shop">Shop</a>
+      <a href="pages/movies.html"     class="nav-link" data-text="Movies">Movies</a>
+    </nav>
+
+    <!-- Actions -->
+    <div class="nav-actions">
+      <button class="nav-btn" id="themeBtn" aria-label="Toggle theme" title="Toggle theme">
+        <span class="theme-icon">☀</span>
+      </button>
+      <button class="nav-btn voice-nav-btn" id="voiceBtn" aria-label="Voice search" title="Voice">
+        <span class="voice-dot"></span>
+      </button>
+      <a href="pages/ecommerce.html" class="nav-btn cart-btn" aria-label="Cart">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="cart-count" id="cartCount" aria-live="polite"></span>
+      </a>
+      <button class="hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!--  HERO  -->
+    <section class="hero" id="home" aria-label="Hero">
+
+      <!-- Background -->
+      <div class="hero-bg" id="heroBg" aria-hidden="true">
+        <div class="hero-img"></div>
+        <div class="hero-overlay"></div>
+        <div class="hero-grain"></div>
+        <!-- Particles canvas -->
+        <canvas class="hero-particles" id="particlesCanvas"></canvas>
+        <!-- Light trails -->
+        <div class="light-trail lt-1"></div>
+        <div class="light-trail lt-2"></div>
+        <div class="light-trail lt-3"></div>
+      </div>
+
+      <!-- Hero Content -->
+      <div class="hero-content" id="heroContent">
+        <div class="hero-eyebrow" data-reveal="fade">
+          <span class="eyebrow-line"></span>
+          <span>FUSION EXPERIENCE</span>
+          <span class="eyebrow-line"></span>
+        </div>
+
+        <h1 class="hero-title">
+          <span class="hero-line-1" data-reveal="up" data-delay="0.2">Where Every</span>
+          <span class="hero-line-2" data-reveal="up" data-delay="0.4">
+            <em>Experience</em>
+          </span>
+          <span class="hero-line-3" data-reveal="up" data-delay="0.6">Meets Excellence.</span>
+        </h1>
+
+        <p class="hero-sub" data-reveal="up" data-delay="0.8">
+          <span class="sub-item">Food</span>
+          <span class="sub-dot">◈</span>
+          <span class="sub-item">Shopping</span>
+          <span class="sub-dot">◈</span>
+          <span class="sub-item">Movies</span>
+          <span class="sub-dot">◈</span>
+          <span class="sub-item">Voice</span>
+        </p>
+
+        <p class="hero-desc" data-reveal="up" data-delay="1.0">
+          Five minds. One vision. A platform where luxury meets functionality — designed to elevate your everyday moments.
+        </p>
+
+        <div class="hero-cta" data-reveal="up" data-delay="1.2">
+          <a href="#services" class="btn-primary">
+            <span>Explore Now</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="#features" class="btn-ghost">
+            <span>Our Features</span>
+          </a>
+        </div>
+
+        <!-- Hero stats -->
+        <div class="hero-stats" data-reveal="up" data-delay="1.4">
+          <div class="stat">
+            <span class="stat-n">5</span>
+            <span class="stat-l">Members</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-n">4</span>
+            <span class="stat-l">Modules</span>
+          </div>
+          <div class="stat-div"></div>
+          <div class="stat">
+            <span class="stat-n">1</span>
+            <span class="stat-l">Platform</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Scroll indicator -->
+      <div class="scroll-cue" aria-hidden="true">
+        <div class="scroll-line"></div>
+        <span>SCROLL</span>
+      </div>
+
+      <!-- Hero bottom fade -->
+      <div class="hero-bottom-fade" aria-hidden="true"></div>
+    </section>
+
+    <!-- MARQUEE STRIP -->
+    <div class="marquee-wrap" aria-hidden="true">
+      <div class="marquee-track">
+        <span>FUSION 5</span><span class="mdot">◈</span>
+        <span>FOOD &amp; SNACKS</span><span class="mdot">◈</span>
+        <span>ECOMMERCE</span><span class="mdot">◈</span>
+        <span>MOVIE BOOKING</span><span class="mdot">◈</span>
+        <span>VOICE ASSISTANT</span><span class="mdot">◈</span>
+        <span>DESIGN + LOGIC</span><span class="mdot">◈</span>
+        <span>INNOVATION</span><span class="mdot">◈</span>
+        <span>FUSION 5</span><span class="mdot">◈</span>
+        <span>FOOD &amp; SNACKS</span><span class="mdot">◈</span>
+        <span>ECOMMERCE</span><span class="mdot">◈</span>
+        <span>MOVIE BOOKING</span><span class="mdot">◈</span>
+        <span>VOICE ASSISTANT</span><span class="mdot">◈</span>
+        <span>DESIGN + LOGIC</span><span class="mdot">◈</span>
+        <span>INNOVATION</span><span class="mdot">◈</span>
+      </div>
+    </div>
+
+    <!--  SERVICES SECTION -->
+    <section class="services" id="services" aria-label="Our Services">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eye reveal" data-dir="fade">WHAT WE OFFER</p>
+          <h2 class="section-title reveal" data-dir="up">
+            Four Experiences.<br><em>One Platform.</em>
+          </h2>
+          <p class="section-sub reveal" data-dir="up" data-delay="0.1">
+            Every module crafted with precision — built to impress, designed to perform.
+          </p>
+        </header>
+
+        <div class="services-grid" id="servicesGrid">
+
+          <!-- Card 01 — Food -->
+          <article class="s-card reveal-card" data-delay="0" aria-label="Food and Snacks">
+            <a href="pages/food.html" class="s-card-link">
+              <div class="s-card-img-wrap">
+                <img src="assets/images/food-card.jpg" alt="Curated food and snacks" loading="lazy">
+                <div class="s-card-img-overlay"></div>
+                <div class="s-card-shine"></div>
+              </div>
+              <div class="s-card-body">
+                <span class="s-card-num">01</span>
+                <div class="s-card-text">
+                  <h3>Food &amp; Snacks</h3>
+                  <p>Curated meals, snacks &amp; beverages — delivered fresh</p>
+                </div>
+                <span class="s-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 02 — Ecommerce -->
+          <article class="s-card reveal-card" data-delay="1" aria-label="Ecommerce">
+            <a href="pages/ecommerce.html" class="s-card-link">
+              <div class="s-card-img-wrap">
+                <img src="assets/images/ecommerce-card.jpg" alt="Premium silver laptop — Latest electronics" loading="lazy">
+                <div class="s-card-img-overlay"></div>
+                <div class="s-card-shine"></div>
+              </div>
+              <div class="s-card-body">
+                <span class="s-card-num">02</span>
+                <div class="s-card-text">
+                  <h3>Ecommerce</h3>
+                  <p>Premium products — mobiles, electronics, fashion &amp; more</p>
+                </div>
+                <span class="s-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 03 — Movies -->
+          <article class="s-card reveal-card" data-delay="2" aria-label="Movie Booking">
+            <a href="pages/movies.html" class="s-card-link">
+              <div class="s-card-img-wrap">
+                <img src="assets/images/movie-card.jpg" alt="Book movie tickets" loading="lazy">
+                <div class="s-card-img-overlay"></div>
+                <div class="s-card-shine"></div>
+              </div>
+              <div class="s-card-body">
+                <span class="s-card-num">03</span>
+                <div class="s-card-text">
+                  <h3>Movie Booking</h3>
+                  <p>Choose your seat, pick your show — confirmed in seconds</p>
+                </div>
+                <span class="s-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          </article>
+
+          <!-- Card 04 — Voice -->
+          <article class="s-card reveal-card" data-delay="3" aria-label="Voice Assistant">
+            <a href="#" class="s-card-link" id="voiceCTA">
+              <div class="s-card-img-wrap">
+                <img src="assets/images/voice-card.jpg" alt="Voice assistant" loading="lazy">
+                <div class="s-card-img-overlay"></div>
+                <div class="s-card-shine"></div>
+              </div>
+              <div class="s-card-body">
+                <span class="s-card-num">04</span>
+                <div class="s-card-text">
+                  <h3>Voice Assistant</h3>
+                  <p>Navigate the entire platform with just your voice</p>
+                </div>
+                <span class="s-card-arrow">
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                </span>
+              </div>
+            </a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="features" id="features" aria-label="Features">
+      <div class="container">
+        <header class="section-head">
+          <p class="section-eye reveal" data-dir="fade">WHY FUSION 5</p>
+          <h2 class="section-title reveal" data-dir="up">
+            Built Different.<br><em>Works Everywhere.</em>
+          </h2>
+        </header>
+
+        <div class="features-grid">
+          <article class="f-item reveal" data-dir="left" data-delay="0">
+            <div class="f-icon">◑</div>
+            <h3>Dark &amp; Light Mode</h3>
+            <p>Switch instantly. Your theme preference saved forever across all sessions.</p>
+          </article>
+          <article class="f-item reveal" data-dir="up" data-delay="0.1">
+            <div class="f-icon">◎</div>
+            <h3>Voice Navigation</h3>
+            <p>Say "Food", "Shop", or "Movies" — navigate the platform hands-free.</p>
+          </article>
+          <article class="f-item reveal" data-dir="right" data-delay="0.2">
+            <div class="f-icon">◻</div>
+            <h3>All Devices</h3>
+            <p>Pixel-perfect on every screen — mobile, tablet and desktop.</p>
+          </article>
+          <article class="f-item reveal" data-dir="left" data-delay="0.3">
+            <div class="f-icon">⊞</div>
+            <h3>Instant Cart</h3>
+            <p>Add products from any page. Cart persists across sessions automatically.</p>
+          </article>
+          <article class="f-item reveal" data-dir="up" data-delay="0.4">
+            <div class="f-icon">◬</div>
+            <h3>Smart Alerts</h3>
+            <p>Toast notifications confirm every action — cart, booking, order.</p>
+          </article>
+          <article class="f-item reveal" data-dir="right" data-delay="0.5">
+            <div class="f-icon">⟳</div>
+            <h3>Data Persistence</h3>
+            <p>localStorage keeps your cart and bookings safe — always available.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!--  PARALLAX QUOTE SECTION  -->
+    <section class="parallax-quote" id="about" aria-label="Brand quote">
+      <div class="pq-bg" id="pqBg" aria-hidden="true"></div>
+      <div class="pq-overlay" aria-hidden="true"></div>
+      <div class="container pq-content">
+        <div class="pq-inner reveal" data-dir="up">
+          <p class="pq-eye">OUR PHILOSOPHY</p>
+          <blockquote class="pq-quote">
+            "Five minds united by one purpose — to craft experiences that don't just work, but <em>inspire</em>."
+          </blockquote>
+          <p class="pq-attr">— Fusion 5 Team</p>
+          <div class="pq-line" aria-hidden="true"></div>
+          <p class="pq-sub">5 Members · Fusion of Design + Logic + Innovation</p>
+        </div>
+      </div>
+    </section>
+
+    <!--  CTA SECTION  -->
+    <section class="cta-section" aria-label="Call to action">
+      <div class="container">
+        <div class="cta-inner reveal" data-dir="up">
+          <p class="section-eye">READY TO BEGIN?</p>
+          <h2 class="cta-title">
+            Your Daily Life.<br><em>Simplified.</em>
+          </h2>
+          <p class="cta-sub">Join the experience. One platform. Everything you need.</p>
+          <div class="cta-btns">
+            <a href="#services" class="btn-primary">
+              <span>Get Started</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!--  FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-top">
+      <div class="container footer-top-inner">
+        <div class="footer-brand">
+          <a href="#home" class="nav-logo footer-logo">
+            <svg class="logo-svg" width="40" height="40" viewBox="0 0 36 36" aria-hidden="true">
+              <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5"/>
+              <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
+              <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="11" font-weight="400">F5</text>
+            </svg>
+            <div class="logo-text-wrap">
+              <span class="logo-name">FUSION 5</span>
+              <span class="logo-tagline">EXCELLENCE MEETS EXPERIENCE</span>
+            </div>
+          </a>
+          <p class="footer-desc">
+            Five minds. One vision. A premium multi-module platform built with pure HTML, CSS &amp; JavaScript — crafted to inspire.
+          </p>
+          <div class="footer-social">
+            <span class="social-label">BUILT WITH</span>
+            <span class="social-tag">HTML</span>
+            <span class="social-tag">CSS</span>
+            <span class="social-tag">JS</span>
+          </div>
+        </div>
+
+        <nav class="footer-col" aria-label="Pages">
+          <h4 class="footer-head">Navigate</h4>
+          <ul>
+            <li><a href="#home">Landing Page</a></li>
+            <li><a href="pages/food.html">Food &amp; Snacks</a></li>
+            <li><a href="pages/ecommerce.html">Ecommerce</a></li>
+            <li><a href="pages/movies.html">Movie Booking</a></li>
+            <li><a href="#" id="footerVoice">Voice Assistant</a></li>
+          </ul>
+        </nav>
+
+        <div class="footer-col">
+          <h4 class="footer-head">Our Team</h4>
+          <ul class="team-list">
+            <li><span class="team-role">M1</span><span class="team-name">Landing Page Lead</span></li>
+            <li><span class="team-role">M2</span><span class="team-name">Ecommerce &amp; Food</span></li>
+            <li><span class="team-role">M3</span><span class="team-name">Movie Booking</span></li>
+            <li><span class="team-role">M4</span><span class="team-name">Voice Recognition</span></li>
+            <li><span class="team-role">M5</span><span class="team-name">JS Integration</span></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h4 class="footer-head">Experience</h4>
+          <ul>
+            <li><a href="#services">Our Services</a></li>
+            <li><a href="#features">Key Features</a></li>
+            <li><a href="#about">Our Story</a></li>
+          </ul>
+          <div class="footer-theme-toggle">
+            <button class="footer-theme-btn" id="footerThemeBtn">
+              <span>Toggle Theme</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer Bottom -->
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p class="footer-copy">© 2025 Fusion 5 — Built by Team of 5</p>
+        <p class="footer-slogan">Where Every Experience Meets Excellence</p>
+        <div class="footer-logo-mini" aria-hidden="true">◈ F5</div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Fixed Voice FAB -->
+  <button class="mic-fab" id="micFab" aria-label="Voice assistant">
+    <span class="mic-icon">◎</span>
+    <span class="mic-pulse" aria-hidden="true"></span>
+    <span class="mic-pulse mic-pulse-2" aria-hidden="true"></span>
+  </button>
+
+  <!-- Toast Container -->
+  <div id="toastContainer" role="status" aria-live="polite" aria-atomic="true"></div>
+
+  <!-- Scripts -->
+  <script src="js/main.js" defer></script>
+  <script src="js/voice.js" defer></script>
+  <script src="js/particles.js" defer></script>
+</body>
+</html>
