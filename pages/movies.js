@@ -197,6 +197,11 @@ function openModal(key) {
   `).join('');
 
   const modal = document.getElementById('languageModal');
+  const langStep = document.getElementById('langStep');
+  const seatStep = document.getElementById('seatStep');
+  if (langStep) langStep.style.display = 'block';
+  if (seatStep) seatStep.style.display = 'none';
+
   modal.classList.add('show');
   modal.style.display = 'flex';
 }
@@ -207,21 +212,76 @@ function closeModal() {
   modal.style.display = 'none';
 }
 
-function proceedBooking() {
-  const selected = document.querySelector('input[name="lang"]:checked');
-  if (!selected) return;
-  const lang = selected.value;
+let selectedLang = '';
+let selectedSeat = '';
+
+function showSeatStep() {
+  const radio = document.querySelector('input[name="lang"]:checked');
+  if (!radio) return;
+  selectedLang = radio.value;
+
+  document.getElementById('langStep').style.display = 'none';
+  document.getElementById('seatStep').style.display = 'block';
+  renderSeats();
+}
+
+function renderSeats() {
+  const grid = document.getElementById('seatGrid');
+  if (!grid) return;
+  grid.innerHTML = '';
+  selectedSeat = '';
+  document.getElementById('confirmBtn').disabled = true;
+
+  // Generate 24 seats (3 rows x 8 seats)
+  for (let i = 1; i <= 24; i++) {
+    const seat = document.createElement('div');
+    seat.className = 'seat available';
+    // Randomly occupy some seats
+    const isOccupied = Math.random() < 0.2;
+    if (isOccupied) {
+      seat.classList.replace('available', 'occupied');
+      seat.textContent = 'X';
+    } else {
+      seat.textContent = i;
+      seat.onclick = () => selectSeat(seat, i);
+    }
+    grid.appendChild(seat);
+  }
+}
+
+function selectSeat(el, num) {
+  document.querySelectorAll('.seat.selected').forEach(s => s.classList.remove('selected'));
+  el.classList.add('selected');
+  selectedSeat = num;
+  document.getElementById('confirmBtn').disabled = false;
+}
+
+function confirmTicket() {
+  if (!selectedSeat) return;
   const movie = movies[selectedMovie];
   closeModal();
 
   const success = document.getElementById('bookingSuccess');
   const msg = document.getElementById('successMsg');
-  if (msg) msg.textContent = `"${movie.names[currentLang] || movie.name}" in ${lang} has been booked. Enjoy your movie! 🎬`;
+  if (msg) {
+    msg.innerHTML = `
+      <strong>your comform ticket</strong><br><br>
+      Movie: ${movie.names[currentLang] || movie.name}<br>
+      Language: ${selectedLang}<br>
+      Seat Number: <strong>${selectedSeat}</strong><br><br>
+      Enjoy your movie! 🎬
+    `;
+  }
   if (success) success.style.display = 'flex';
 
-  // Save booking
+  // Save to History
   const bookings = JSON.parse(localStorage.getItem('fusion5-bookings') || '[]');
-  bookings.push({ movie: movie.names[currentLang] || movie.name, lang, time: new Date().toLocaleString() });
+  bookings.push({
+    movie: movie.names[currentLang] || movie.name,
+    lang: selectedLang,
+    seat: selectedSeat,
+    time: new Date().toLocaleString()
+  });
   localStorage.setItem('fusion5-bookings', JSON.stringify(bookings));
 }
 
@@ -229,9 +289,11 @@ function closeSuccess() {
   const success = document.getElementById('bookingSuccess');
   if (success) success.style.display = 'none';
 }
+
 window.openModal = openModal;
 window.closeModal = closeModal;
-window.proceedBooking = proceedBooking;
+window.showSeatStep = showSeatStep;
+window.confirmTicket = confirmTicket;
 window.closeSuccess = closeSuccess;
 
 /* ══ CLICK OUTSIDE MODAL ══ */
