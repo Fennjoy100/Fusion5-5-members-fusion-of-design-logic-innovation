@@ -32,18 +32,53 @@
 
   <!-- NAVBAR -->
   <header class="mv-navbar" id="navbar" role="banner">
-    <!-- Logo -->
-    <a href="../index.html" class="mv-logo" aria-label="Fusion 5 Home">
-      <svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true">
-        <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5"/>
-        <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
-        <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="11" font-weight="400">F5</text>
-      </svg>
-      <div>
-        <span class="mv-logo-main">THIRAI</span><span class="mv-logo-sub">VERSE</span>
-        <span class="mv-logo-fusion"> · Fusion 5</span>
+    <!-- Logo area with actions -->
+    <div class="mv-logo-area">
+      <a href="../index.html" class="mv-logo" aria-label="Fusion 5 Home">
+        <svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true">
+          <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5"/>
+          <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
+          <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="11" font-weight="400">F5</text>
+        </svg>
+        <div>
+          <span class="mv-logo-main">THIRAI</span><span class="mv-logo-sub">VERSE</span>
+          <span class="mv-logo-fusion"> · Fusion 5</span>
+        </div>
+      </a>
+
+      <div class="mv-logo-actions">
+        <!-- Language Translator -->
+        <div class="nav-lang-wrap">
+          <button class="nav-btn" id="langBtn" aria-label="Translate" title="Choose Language">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </button>
+          <div class="lang-dropdown" id="langDropdown">
+            <button data-lang="en">English</button>
+            <button data-lang="ta">Tamil (தமிழ்)</button>
+            <button data-lang="ml">Malayalam (മലയാളം)</button>
+            <button data-lang="hi">Hindi (हिन्दी)</button>
+            <button data-lang="es">Spanish (Español)</button>
+          </div>
+        </div>
+
+        <!-- Speaker / TTS -->
+        <button class="nav-btn" id="speakerBtn" aria-label="Read products" title="Read Movie Titles">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          </svg>
+        </button>
+
+        <!-- Voice Search -->
+        <button class="mv-icon-btn voice-nav-btn" id="voiceBtn" aria-label="Voice Search">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
+            <line x1="12" y1="19" x2="12" y2="23"/>
+            <line x1="8" y1="23" x2="16" y2="23"/>
+          </svg>
+        </button>
       </div>
-    </a>
+    </div>
 
     <!-- Nav Links -->
     <ul class="mv-menu" id="mvMenu" role="navigation">
@@ -62,35 +97,6 @@
       </div>
       <button class="mv-icon-btn" id="themeBtn" aria-label="Toggle theme">
         <span class="theme-icon">☀</span>
-      </button>
-
-      <!-- Language Translator -->
-      <div class="nav-lang-wrap">
-        <button class="nav-btn" id="langBtn" aria-label="Translate" title="Choose Language">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </button>
-        <div class="lang-dropdown" id="langDropdown">
-          <button data-lang="en">English</button>
-          <button data-lang="ta">Tamil (தமிழ்)</button>
-          <button data-lang="ml">Malayalam (മലയാളം)</button>
-          <button data-lang="hi">Hindi (हिन्दी)</button>
-          <button data-lang="es">Spanish (Español)</button>
-        </div>
-      </div>
-
-      <!-- Speaker / TTS -->
-      <button class="nav-btn" id="speakerBtn" aria-label="Read products" title="Read Movie Titles">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
-        </svg>
-      </button>
-      <button class="mv-icon-btn voice-nav-btn" id="voiceBtn" aria-label="Voice Search">
-        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-          <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-          <line x1="12" y1="19" x2="12" y2="23"/>
-          <line x1="8" y1="23" x2="16" y2="23"/>
-        </svg>
       </button>
       <button class="mv-hamburger" id="hamburger" aria-label="Menu" aria-expanded="false">
         <span></span><span></span><span></span>
