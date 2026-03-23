@@ -5,37 +5,44 @@ const movies = {
   thaai: {
     name: "Thaai Kizhavi", names: { en: "Thaai Kizhavi", ta: "தாய் கிழவி", ml: "തായ് കിഴവി", hi: "थाई किज़वी", es: "Thaai Kizhavi" },
     certificate: "U", language: "Tamil, Malayalam",
-    duration: "2h 30m", poster: "../assets/images/movies/p-thai.jpg"
+    duration: "2h 30m", poster: "../assets/images/movies/p-thai.jpg",
+    showtimes: ["10:30 AM", "2:15 PM", "6:45 PM", "10:00 PM"]
   },
   dhurandhar: {
     name: "Dhurandhar", names: { en: "Dhurandhar", ta: "துரந்தர்", ml: "ദുരന്തർ", hi: "धुरंधर", es: "Dhurandhar" },
     certificate: "A", language: "Tamil, Hindi, Malayalam",
-    duration: "3h", poster: "../assets/images/movies/p-dhu.jpg"
+    duration: "3h", poster: "../assets/images/movies/p-dhu.jpg",
+    showtimes: ["11:00 AM", "3:00 PM", "7:00 PM", "10:30 PM"]
   },
   youth: {
     name: "Youth", names: { en: "Youth", ta: "யூத்", ml: "യൂത്ത്", hi: "यूथ", es: "Youth" },
     certificate: "TBA", language: "Tamil, Telugu",
-    duration: "2h 40m", poster: "../assets/images/movies/p-youth.jpg"
+    duration: "2h 40m", poster: "../assets/images/movies/p-youth.jpg",
+    showtimes: ["10:15 AM", "1:45 PM", "5:30 PM", "9:15 PM"]
   },
   aadu: {
     name: "Aadu-3", names: { en: "Aadu-3", ta: "ஆடு-3", ml: "ആട്-3", hi: "आदु-3", es: "Aadu-3" },
     certificate: "A", language: "Tamil, Malayalam",
-    duration: "2h 30m", poster: "../assets/images/movies/p-aadu.jpg"
+    duration: "2h 30m", poster: "../assets/images/movies/p-aadu.jpg",
+    showtimes: ["12:00 PM", "4:00 PM", "8:00 PM"]
   },
   vadam: {
     name: "Vadam", names: { en: "Vadam", ta: "வடம்", ml: "വടം", hi: "वड़म", es: "Vadam" },
     certificate: "U/A", language: "Tamil",
-    duration: "2h 20m", poster: "../assets/images/movies/p-VAdam.jpg"
+    duration: "2h 20m", poster: "../assets/images/movies/p-VAdam.jpg",
+    showtimes: ["11:30 AM", "2:45 PM", "6:15 PM", "9:45 PM"]
   },
   withlove: {
     name: "With Love", names: { en: "With Love", ta: "வித் லவ்", ml: "വിത്ത് ലവ്", hi: "विद लव", es: "Con Amor" },
     certificate: "U/A", language: "Tamil, Hindi",
-    duration: "2h 25m", poster: "../assets/images/movies/p-withlovw.jpg"
+    duration: "2h 25m", poster: "../assets/images/movies/p-withlovw.jpg",
+    showtimes: ["10:45 AM", "1:15 PM", "4:30 PM", "8:00 PM", "11:15 PM"]
   },
   vowels: {
     name: "VOWELS", names: { en: "VOWELS", ta: "வோவெல்ஸ்", ml: "വവൽസ്", hi: "वोवेल्स", es: "Vocales" },
     certificate: "U/A", language: "Tamil, Telugu",
-    duration: "2h 50m", poster: "../assets/images/movies/p-VOWELS.jpg"
+    duration: "2h 50m", poster: "../assets/images/movies/p-VOWELS.jpg",
+    showtimes: ["11:15 AM", "3:30 PM", "7:15 PM", "10:45 PM"]
   }
 };
 
@@ -199,6 +206,18 @@ function openModal(key) {
   const modal = document.getElementById('languageModal');
   const langStep = document.getElementById('langStep');
   const seatStep = document.getElementById('seatStep');
+  
+  // Add showtimes to modal
+  const timeContainer = document.getElementById('showtimeOptions');
+  if (timeContainer) {
+    timeContainer.innerHTML = movie.showtimes.map((time, i) => `
+      <label class="time-btn-wrap">
+        <input type="radio" name="movieTime" value="${time}" ${i === 0 ? 'checked' : ''}>
+        <span class="time-btn">${time}</span>
+      </label>
+    `).join('');
+  }
+
   if (langStep) langStep.style.display = 'block';
   if (seatStep) seatStep.style.display = 'none';
 
@@ -213,12 +232,20 @@ function closeModal() {
 }
 
 let selectedLang = '';
-let selectedSeat = '';
+let selectedSeats = [];
+let selectedTime = '';
 
 function showSeatStep() {
-  const radio = document.querySelector('input[name="lang"]:checked');
-  if (!radio) return;
-  selectedLang = radio.value;
+  const langRadio = document.querySelector('input[name="lang"]:checked');
+  const timeRadio = document.querySelector('input[name="movieTime"]:checked');
+  
+  if (!langRadio || !timeRadio) {
+    showToast('Please select language and time', 'error');
+    return;
+  }
+  
+  selectedLang = langRadio.value;
+  selectedTime = timeRadio.value;
 
   document.getElementById('langStep').style.display = 'none';
   document.getElementById('seatStep').style.display = 'block';
@@ -229,15 +256,17 @@ function renderSeats() {
   const grid = document.getElementById('seatGrid');
   if (!grid) return;
   grid.innerHTML = '';
-  selectedSeat = '';
-  document.getElementById('confirmBtn').disabled = true;
+  selectedSeats = [];
+  const confirmBtn = document.getElementById('confirmBtn');
+  confirmBtn.disabled = true;
+  confirmBtn.classList.remove('active');
 
   // Generate 24 seats (3 rows x 8 seats)
   for (let i = 1; i <= 24; i++) {
     const seat = document.createElement('div');
     seat.className = 'seat available';
-    // Randomly occupy some seats
-    const isOccupied = Math.random() < 0.2;
+    // Randomly occupy some seats, but keep at least 15 free for testing
+    const isOccupied = Math.random() < 0.25 && i > 15; 
     if (isOccupied) {
       seat.classList.replace('available', 'occupied');
       seat.textContent = 'X';
@@ -250,14 +279,32 @@ function renderSeats() {
 }
 
 function selectSeat(el, num) {
-  document.querySelectorAll('.seat.selected').forEach(s => s.classList.remove('selected'));
-  el.classList.add('selected');
-  selectedSeat = num;
-  document.getElementById('confirmBtn').disabled = false;
+  if (el.classList.contains('occupied')) return;
+
+  if (el.classList.contains('selected')) {
+    el.classList.remove('selected');
+    selectedSeats = selectedSeats.filter(s => s !== num);
+  } else {
+    if (selectedSeats.length >= 10) {
+      showToast('Maximum 10 tickets allowed', 'error');
+      return;
+    }
+    el.classList.add('selected');
+    selectedSeats.push(num);
+  }
+
+  const confirmBtn = document.getElementById('confirmBtn');
+  if (selectedSeats.length > 0) {
+    confirmBtn.disabled = false;
+    confirmBtn.classList.add('active');
+  } else {
+    confirmBtn.disabled = true;
+    confirmBtn.classList.remove('active');
+  }
 }
 
 function confirmTicket() {
-  if (!selectedSeat) return;
+  if (selectedSeats.length === 0) return;
   const movie = movies[selectedMovie];
   closeModal();
 
@@ -265,22 +312,27 @@ function confirmTicket() {
   const msg = document.getElementById('successMsg');
   if (msg) {
     msg.innerHTML = `
-      <strong>your comform ticket</strong><br><br>
-      Movie: ${movie.names[currentLang] || movie.name}<br>
-      Language: ${selectedLang}<br>
-      Seat Number: <strong>${selectedSeat}</strong><br><br>
-      Enjoy your movie! 🎬
+      <div class="success-details">
+        <p>Movie: <strong>${movie.names[currentLang] || movie.name}</strong></p>
+        <p>Time: <span class="highlight-green">${selectedTime}</span></p>
+        <p>Seats: <span class="highlight-green">${selectedSeats.sort((a,b)=>a-b).join(', ')}</span></p>
+        <p>Language: <strong>${selectedLang}</strong></p>
+      </div>
+      <p class="final-wish">Enjoy your movie! 🎬</p>
     `;
   }
   if (success) success.style.display = 'flex';
 
   // Save to History
   const bookings = JSON.parse(localStorage.getItem('fusion5-bookings') || '[]');
-  bookings.push({
-    movie: movie.names[currentLang] || movie.name,
-    lang: selectedLang,
-    seat: selectedSeat,
-    time: new Date().toLocaleString()
+  selectedSeats.forEach(seatNum => {
+    bookings.push({
+      movie: movie.names[currentLang] || movie.name,
+      lang: selectedLang,
+      seat: seatNum,
+      time: selectedTime,
+      bookingDate: new Date().toLocaleString()
+    });
   });
   localStorage.setItem('fusion5-bookings', JSON.stringify(bookings));
 }
@@ -361,6 +413,7 @@ function initTheme() {
   const btn = document.getElementById('themeBtn');
   const icon = document.querySelector('#themeBtn .theme-icon');
   const saved = localStorage.getItem('fusion5-theme') || 'dark';
+  document.documentElement.setAttribute('data-theme', saved);
   if (icon) icon.textContent = saved === 'dark' ? '☀' : '◑';
   if (btn) {
     btn.addEventListener('click', () => {

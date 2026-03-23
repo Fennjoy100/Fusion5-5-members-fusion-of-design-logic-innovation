@@ -24,7 +24,12 @@ let currentLang = localStorage.getItem('fusion5-lang') || 'en';
 
 /* ── CART ── */
 function getCart() { return JSON.parse(localStorage.getItem('fusion5-cart') || '[]'); }
-function saveCart(arr) { localStorage.setItem('fusion5-cart', JSON.stringify(arr)); updateCartBadge(); renderCart(); }
+function saveCart(arr) { 
+  localStorage.setItem('fusion5-cart', JSON.stringify(arr)); 
+  updateCartBadge(); 
+  renderCart(); 
+  if (typeof currentFilteredProducts !== 'undefined') renderProducts(currentFilteredProducts);
+}
 
 function addToCart(id) {
   const product = PRODUCTS.find(p => p.id === id);
@@ -38,7 +43,7 @@ function addToCart(id) {
   }
   saveCart(cart);
   showToast(`${product.names[currentLang] || product.name} added to cart ⊠`);
-  openCart();
+  // Cart does not auto-open anymore to allow inline adjustments
 }
 
 function removeFromCart(id) {
@@ -49,10 +54,21 @@ function removeFromCart(id) {
 
 function changeQty(id, delta) {
   const cart = getCart();
-  const item = cart.find(i => i.id === id);
-  if (!item) return;
-  item.qty = Math.max(1, (item.qty || 1) + delta);
-  saveCart(cart);
+  const itemIndex = cart.findIndex(i => i.id === id);
+  if (itemIndex === -1) return;
+  
+  const newQty = (cart[itemIndex].qty || 1) + delta;
+  
+  if (newQty <= 0) {
+    // Delete operation triggered via update
+    cart.splice(itemIndex, 1);
+    saveCart(cart);
+    showToast('Item removed from cart');
+  } else {
+    // Update operation
+    cart[itemIndex].qty = newQty;
+    saveCart(cart);
+  }
 }
 
 function clearCart() {
@@ -61,7 +77,10 @@ function clearCart() {
 }
 
 /* ── RENDER PRODUCTS ── */
+let currentFilteredProducts = PRODUCTS;
+
 function renderProducts(list) {
+  currentFilteredProducts = list;
   const grid = document.getElementById('productsGrid');
   const noRes = document.getElementById('noResults');
   if (!grid) return;
@@ -72,7 +91,28 @@ function renderProducts(list) {
   }
   if (noRes) noRes.style.display = 'none';
 
+  const cart = getCart();
+
   list.forEach(p => {
+    const inCart = cart.find(i => i.id === p.id);
+    const qty = inCart ? inCart.qty : 0;
+    
+    let footerAction = '';
+    if (qty > 0) {
+      footerAction = `
+        <div class="inline-actions-wrap">
+          <div class="inline-qty-ctrl">
+            <button class="inline-qty-btn" onclick="changeQty('${p.id}', -1)">−</button>
+            <span class="inline-qty-val">${qty}</span>
+            <button class="inline-qty-btn" onclick="changeQty('${p.id}', 1)">+</button>
+          </div>
+          <button class="buy-now-btn" onclick="triggerBuy('${p.id}')">BUY</button>
+        </div>
+      `;
+    } else {
+      footerAction = `<button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Add to Cart</button>`;
+    }
+
     const card = document.createElement('article');
     card.className = 'product-card reveal-card'; // Changed class name
     card.setAttribute('role', 'listitem');
@@ -92,7 +132,7 @@ function renderProducts(list) {
         <p class="product-desc">${p.desc}</p>
         <div class="product-footer">
           <span class="price">₹${p.price.toLocaleString('en-IN')}</span>
-          <button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Add to Cart</button>
+          ${footerAction}
         </div>
       </div>
     `;
@@ -285,6 +325,20 @@ function initVoiceSearch() {
 }
 
 /* ── ORDER POPUP ── */
+window.triggerBuy = function(id) {
+  const orderOverlay = document.getElementById('orderOverlay');
+  const orderPopup = document.getElementById('orderPopup');
+  
+  // Close cart slidebar if open
+  closeCart();
+  
+  if (orderOverlay) orderOverlay.classList.add('visible');
+  if (orderPopup) orderPopup.classList.add('visible');
+  
+  // Clear cart after successful direct buy
+  saveCart([]);
+}
+
 function initOrderPopup() {
   const checkoutBtn = document.getElementById('checkoutBtn');
   const orderOverlay = document.getElementById('orderOverlay');

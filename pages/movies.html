@@ -192,10 +192,18 @@
           <button class="mv-modal-close" onclick="closeModal()" aria-label="Close modal">×</button>
         </div>
 
-        <!-- Step 1: Language -->
+        <!-- Step 1: Language & Time -->
         <div id="langStep">
-          <p class="mv-modal-sub">Select Language</p>
-          <div id="languageOptions" class="mv-lang-options"></div>
+          <div class="modal-section">
+            <p class="mv-modal-sub">Select Language</p>
+            <div id="languageOptions" class="mv-lang-options"></div>
+          </div>
+          
+          <div class="modal-section">
+            <p class="mv-modal-sub">Select Showtime</p>
+            <div id="showtimeOptions" class="mv-time-options"></div>
+          </div>
+
           <button class="mv-proceed-btn" onclick="showSeatStep()">
             Proceed to Seat Selection
             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
@@ -205,12 +213,24 @@
         <!-- Step 2: Seat Selection (Initially Hidden) -->
         <div id="seatStep" style="display:none;">
           <p class="mv-modal-sub">Select your Seat</p>
-          <div class="mv-screen-indicator"></div>
+          <div class="mv-screen-container">
+            <div class="mv-screen-line"></div>
+            <p class="mv-screen-text">SCREEN</p>
+          </div>
           <div id="seatGrid" class="mv-seat-grid"></div>
           <div class="mv-seat-legend">
-            <span><span class="seat available"></span> Available</span>
-            <span><span class="seat selected"></span> Selected</span>
-            <span><span class="seat occupied"></span> Occupied</span>
+            <div class="legend-item">
+              <span class="seat available"></span>
+              <span>Available</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat selected"></span>
+              <span>Selected</span>
+            </div>
+            <div class="legend-item">
+              <span class="seat occupied"></span>
+              <span>Occupied</span>
+            </div>
           </div>
           <button class="mv-proceed-btn" id="confirmBtn" onclick="confirmTicket()" disabled>
             Confirm Ticket

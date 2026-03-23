@@ -347,6 +347,20 @@ function initVoiceSearch() {
   };
 }
 
+/* 12. HANDLE ORDER FORM */
+function initOrderForm() {
+  const form = document.querySelector('.order-form');
+  if (!form) return;
+  
+  form.addEventListener('submit', (e) => {
+    e.preventDefault(); // Prevent default mailto action
+    
+    // If we reach here, HTML5 validation (required) has passed
+    showToast('Your order has been placed successfully! 🍔', 'success');
+    form.reset();
+  });
+}
+
 /* INIT ALL */
 document.addEventListener('DOMContentLoaded', () => {
   initTheme();
@@ -358,4 +372,5 @@ document.addEventListener('DOMContentLoaded', () => {
   initTTS();
   initSmoothScroll();
   updateCartBadge();
+  initOrderForm();
 });
