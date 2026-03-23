@@ -173,8 +173,8 @@
 /* PRODUCT GRID */
 .ec-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-  gap: 2.5rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
@@ -474,32 +474,128 @@
 @media (max-width: 800px) {
   .ec-cart-slidebar { width: 100%; right: -100%; }
   
-  /* Restoring the requested horizontal scrollbar for product grid on mobile */
+  /* Force layout to remain side-by-side unconditionally on mobile */
+  .ec-layout {
+    flex-direction: row;
+    gap: 0.2rem;
+    overflow: hidden;
+  }
+  .ec-sidebar {
+    width: 15%;
+    min-width: 60px;
+    max-width: 90px;
+    position: static;
+    padding: 0.3rem;
+  }
+  
+  /* Vertical Grid (5 Rows x 2 Columns) */
+  .ec-main-content {
+    flex: 1;
+    overflow-y: auto;
+  }
   .ec-grid {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 1.5rem;
-    overflow-x: auto;
-    padding-bottom: 1.5rem;
-    scroll-snap-type: x mandatory;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.5rem;
+    width: 100%;
+    padding-bottom: 3rem;
   }
   .product-card {
-    flex: 0 0 280px;
-    scroll-snap-align: start;
+    width: 100%;
+    flex: none;
   }
-  .ec-grid::-webkit-scrollbar {
-    height: 10px;
+
+  /* Vertical scrolling and scaling for 5-row by 2-column view */
+  
+  /* Scale down the elements within the 4-column grid aggressively to fit mobile width */
+  /* Ultra-scaling for the high-density 5x5 layout */
+  .product-image img {
+    padding: 0.2rem;
   }
-  .ec-grid::-webkit-scrollbar-track {
-    background: var(--bg-card);
-    border-radius: 6px;
+  .product-badge {
+    font-size: 0.25rem;
+    padding: 0.1rem 0.2rem;
+    top: 0.2rem;
+    left: 0.2rem;
   }
-  .ec-grid::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.4);
-    border-radius: 6px;
+  .product-body {
+    padding: 0.2rem;
   }
-  .ec-grid::-webkit-scrollbar-thumb:hover {
-    background: var(--gold);
+  .product-body h3 {
+    font-size: 0.45rem;
+    line-height: 1;
+    margin-bottom: 0.1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .price {
+    font-size: 0.5rem;
+    margin-bottom: 0.2rem;
+  }
+  .product-body p {
+    display: none; /* Hide for 5x5 density */
+  }
+  .product-rating {
+    font-size: 0.35rem;
+    margin-bottom: 0.1rem;
+  }
+  .inline-qty-ctrl {
+    display: flex;
+    align-items: center;
+    background: var(--bg-1);
+    border: 1px solid var(--border-sub);
+    border-radius: 4px;
+    overflow: hidden;
+    height: 30px;
+  }
+  .inline-qty-btn {
+    width: 30px;
+    height: 100%;
+    border: none;
+    background: transparent;
+    color: var(--gold);
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .inline-qty-val {
+    width: 30px;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+  }
+  .inline-actions-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    width: 100%;
+  }
+  /* Reset scaling for 2-column layout */
+  .product-image img { padding: 0.5rem; }
+  .product-badge { font-size: 0.5rem; padding: 0.2rem 0.5rem; top: 0.4rem; left: 0.4rem; }
+  .product-body { padding: 0.5rem; }
+  .product-body h3 { font-size: 0.85rem; line-height: 1.2; margin-bottom: 0.2rem; white-space: normal; overflow: visible; }
+  .price { font-size: 0.9rem; margin-bottom: 0.3rem; }
+  .product-body p { 
+    font-size: 0.65rem; line-height: 1.3; margin-bottom: 0.5rem;
+    display: -webkit-box; -webkit-line-clamp: 2; line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden;
+  }
+  .product-rating { font-size: 0.6rem; margin-bottom: 0.3rem; }
+  .buy-now-btn, .add-to-cart-btn {
+    font-size: 0.75rem; font-weight: 500; height: 35px; width: 100%; border-radius: 4px;
+    background: transparent; border: 1px solid var(--gold); color: var(--gold);
+    transition: all 0.3s; cursor: pointer; display: flex; align-items: center; justify-content: center;
+  }
+  .buy-now-btn:active, .add-to-cart-btn:active { background: var(--gold); color: var(--bg-1); }
+
+  /* Specific styling for the order confirmation button based on screenshot */
+  .order-placed-btn {
+    width: 240px; height: 50px; background: transparent; border: 1px solid var(--gold);
+    border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; margin-top: 2rem;
+  }
+  .order-placed-btn .dot {
+    width: 10px; height: 10px; background: var(--gold); border-radius: 50%; box-shadow: 0 0 10px var(--gold);
   }
 }
 

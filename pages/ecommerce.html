@@ -251,11 +251,16 @@
     <div class="order-popup" id="orderPopup">
       <div class="order-popup-inner">
         <div class="order-icon">
-          <img src="../assets/images/images/orderconfirmed.png" alt="Success" class="order-success-img">
+          <svg width="100" height="100" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="60" cy="60" r="50" fill="#28a745" />
+            <path d="M35 60 L52 77 L85 44" stroke="white" stroke-width="8" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          </svg>
         </div>
         <h1>Order Placed</h1>
         <p>Thank you for shopping with Fusion 5. Your experience is our excellence.</p>
-        <button class="btn-primary" id="backToShop">Back to Shop</button>
+        <button class="order-placed-btn" id="backToShop">
+          <div class="dot"></div>
+        </button>
       </div>
     </div>
 
