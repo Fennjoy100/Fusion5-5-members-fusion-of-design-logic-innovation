@@ -1,17 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Fusion 5 Food Court — Curated meals, snacks & beverages delivered fresh. Tasty burgers, pizza, ice cream and more.">
+  <meta name="description"
+    content="Fusion 5 Food Court — Curated meals, snacks & beverages delivered fresh. Tasty burgers, pizza, ice cream and more.">
   <title>Food Court — Fusion 5</title>
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css"
-        integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
+    integrity="sha384-DyZ88mC6Up2uqS4h/KRgHuoeGwBcD4Ng9SiP4dIRy0EXTlnuz47vAwmeGwVChigm" crossorigin="anonymous">
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap" rel="stylesheet">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@200;300;400;500&display=swap"
+    rel="stylesheet">
   <link rel="stylesheet" href="../css/style.css">
   <link rel="stylesheet" href="food.css">
 </head>
+
 <body>
 
   <div class="cursor" id="cursor"></div>
@@ -21,15 +26,17 @@
   <div class="loader-container" id="loader">
     <div class="loader-inner">
       <svg width="60" height="60" viewBox="0 0 60 60" style="margin-bottom:1.5rem">
-        <circle cx="30" cy="30" r="26" fill="none" stroke="#C9A84C" stroke-width="0.8"
-          stroke-dasharray="5 3" style="animation:spinRing 8s linear infinite;transform-origin:center"/>
-        <circle cx="30" cy="30" r="18" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.6"/>
-        <text x="50%" y="57%" text-anchor="middle" fill="#C9A84C"
-          font-family="Cormorant Garamond,serif" font-size="14" font-weight="400">F5</text>
+        <circle cx="30" cy="30" r="26" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="5 3"
+          style="animation:spinRing 8s linear infinite;transform-origin:center" />
+        <circle cx="30" cy="30" r="18" fill="none" stroke="rgba(201,168,76,0.25)" stroke-width="0.6" />
+        <text x="50%" y="57%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond,serif" font-size="14"
+          font-weight="400">F5</text>
       </svg>
       <div class="loader-name">FOOD COURT</div>
       <div class="loader-tag">Crafted with love</div>
-      <div class="loader-bar"><div class="loader-fill"></div></div>
+      <div class="loader-bar">
+        <div class="loader-fill"></div>
+      </div>
     </div>
   </div>
 
@@ -40,9 +47,10 @@
       <!-- Logo -->
       <a href="../index.html" class="logo">
         <svg width="32" height="32" viewBox="0 0 36 36" aria-hidden="true">
-          <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5"/>
-          <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5"/>
-          <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif" font-size="11" font-weight="400">F5</text>
+          <circle cx="18" cy="18" r="16" fill="none" stroke="#C9A84C" stroke-width="0.8" stroke-dasharray="3 2.5" />
+          <circle cx="18" cy="18" r="11" fill="none" stroke="#C9A84C" stroke-width="0.5" opacity="0.5" />
+          <text x="50%" y="56%" text-anchor="middle" fill="#C9A84C" font-family="Cormorant Garamond, serif"
+            font-size="11" font-weight="400">F5</text>
         </svg>
         <span>FOOD COURT</span>
       </a>
@@ -52,7 +60,12 @@
         <!-- Language Translator -->
         <div class="nav-lang-wrap">
           <button class="nav-btn" id="langBtn" aria-label="Translate" title="Choose Language">
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+              stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="2" y1="12" x2="22" y2="12" />
+              <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z" />
+            </svg>
           </button>
           <div class="lang-dropdown" id="langDropdown">
             <button data-lang="en">English</button>
@@ -65,18 +78,21 @@
 
         <!-- Speaker / TTS -->
         <button class="nav-btn" id="speakerBtn" aria-label="Read products" title="Read Product Names">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5" />
+            <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07" />
           </svg>
         </button>
 
         <!-- Voice -->
         <button class="nav-btn voice-nav-btn" id="voiceBtn" aria-label="Voice search" title="Voice Search">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"/>
-            <path d="M19 10v2a7 7 0 0 1-14 0v-2"/>
-            <line x1="12" y1="19" x2="12" y2="23"/>
-            <line x1="8" y1="23" x2="16" y2="23"/>
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z" />
+            <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+            <line x1="12" y1="19" x2="12" y2="23" />
+            <line x1="8" y1="23" x2="16" y2="23" />
           </svg>
         </button>
       </div>
@@ -84,11 +100,11 @@
 
     <!-- Center Nav Links -->
     <nav class="navbar" id="navLinks">
-      <a href="#home"        class="nav-link active">Home</a>
-      <a href="#speciality"  class="nav-link">Our's Special</a>
-      <a href="#popular"     class="nav-link">Popular Foods</a>
-      <a href="#gallery"     class="nav-link">Gallery</a>
-      <a href="#review"      class="nav-link">Reviews</a>
+      <a href="../index.html" class="nav-link active">Home</a>
+      <a href="#speciality" class="nav-link">Our's Special</a>
+      <a href="#popular" class="nav-link">Popular Foods</a>
+      <a href="#gallery" class="nav-link">Gallery</a>
+      <a href="#review" class="nav-link">Reviews</a>
     </nav>
 
     <!-- Actions -->
@@ -101,11 +117,10 @@
 
       <!-- Cart -->
       <a href="#order" class="nav-btn cart-btn" aria-label="Order cart">
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="1.5">
-          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
-          <line x1="3" y1="6" x2="21" y2="6"/>
-          <path d="M16 10a4 4 0 01-8 0"/>
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z" />
+          <line x1="3" y1="6" x2="21" y2="6" />
+          <path d="M16 10a4 4 0 01-8 0" />
         </svg>
         <span class="cart-count" id="cartCount"></span>
       </a>
@@ -129,8 +144,8 @@
     <div class="content">
       <h3>Tasty <em>Bites.</em></h3>
       <p>Welcome to Food Court, where every meal is a culinary masterpiece delivered straight to your door.
-         Explore a world of flavors with our diverse menu, curated from the finest ingredients and prepared by
-         top chefs. Order now and indulge in exceptional food, made just for you.</p>
+        Explore a world of flavors with our diverse menu, curated from the finest ingredients and prepared by
+        top chefs. Order now and indulge in exceptional food, made just for you.</p>
       <a href="#order" class="btn">Order Now</a>
     </div>
     <div class="image">
@@ -145,43 +160,55 @@
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-1.jpg" alt="Tasty Burger">
         <div class="content">
-          <img src="../assets/images/food/s-1.png" alt=""><h3>Tasty Burger</h3>
-          <p>A perfect blend of succulent premium beef, fresh vegetables, and our signature sauce in a perfectly toasted bun. Experience burger perfection today!</p>
+          <img src="../assets/images/food/s-1.png" alt="">
+          <h3>Tasty Burger</h3>
+          <p>A perfect blend of succulent premium beef, fresh vegetables, and our signature sauce in a perfectly toasted
+            bun. Experience burger perfection today!</p>
         </div>
       </div>
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-2.jpg" alt="Tasty Pizza">
         <div class="content">
-          <img src="../assets/images/food/s-2.png" alt=""><h3>Tasty Pizza</h3>
-          <p>Crafted with a crispy golden crust, rich tomato sauce, and the finest freshest toppings. Melted cheese and herbs — enjoy pizza perfection!</p>
+          <img src="../assets/images/food/s-2.png" alt="">
+          <h3>Tasty Pizza</h3>
+          <p>Crafted with a crispy golden crust, rich tomato sauce, and the finest freshest toppings. Melted cheese and
+            herbs — enjoy pizza perfection!</p>
         </div>
       </div>
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-3.jpg" alt="Cold Ice Cream">
         <div class="content">
-          <img src="../assets/images/food/s-3.png" alt=""><h3>Cold Ice-Cream</h3>
-          <p>A creamy, dreamy delight that melts in your mouth. Choose from a variety of rich indulgent flavors. Refreshingly cool and irresistibly smooth!</p>
+          <img src="../assets/images/food/s-3.png" alt="">
+          <h3>Cold Ice-Cream</h3>
+          <p>A creamy, dreamy delight that melts in your mouth. Choose from a variety of rich indulgent flavors.
+            Refreshingly cool and irresistibly smooth!</p>
         </div>
       </div>
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-4.jpg" alt="Cold Drinks">
         <div class="content">
-          <img src="../assets/images/food/s-4.png" alt=""><h3>Cold Drinks</h3>
-          <p>Quench your thirst with our refreshing selection of beverages. Classic sodas, sparkling waters, or fruity refreshments — enjoy the chill!</p>
+          <img src="../assets/images/food/s-4.png" alt="">
+          <h3>Cold Drinks</h3>
+          <p>Quench your thirst with our refreshing selection of beverages. Classic sodas, sparkling waters, or fruity
+            refreshments — enjoy the chill!</p>
         </div>
       </div>
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-5.jpg" alt="Tasty Sweets">
         <div class="content">
-          <img src="../assets/images/food/s-5.png" alt=""><h3>Tasty Sweets</h3>
-          <p>A heavenly assortment of desserts crafted to satisfy your sweet tooth. Decadent cakes, pastries, creamy puddings — enjoy the sweetness!</p>
+          <img src="../assets/images/food/s-5.png" alt="">
+          <h3>Tasty Sweets</h3>
+          <p>A heavenly assortment of desserts crafted to satisfy your sweet tooth. Decadent cakes, pastries, creamy
+            puddings — enjoy the sweetness!</p>
         </div>
       </div>
       <div class="box">
         <img class="image" src="../assets/images/food/s-img-6.jpg" alt="Tasty Breakfast">
         <div class="content">
-          <img src="../assets/images/food/s-6.png" alt=""><h3>Tasty Breakfast</h3>
-          <p>Start your day with fluffy pancakes, golden waffles, hearty omelets, and fresh fruit bowls. Delicious, nourishing, and energizing!</p>
+          <img src="../assets/images/food/s-6.png" alt="">
+          <h3>Tasty Breakfast</h3>
+          <p>Start your day with fluffy pancakes, golden waffles, hearty omelets, and fresh fruit bowls. Delicious,
+            nourishing, and energizing!</p>
         </div>
       </div>
     </div>
@@ -195,42 +222,48 @@
         <span class="price">₹150 - ₹450</span>
         <img src="../assets/images/food/p-1.jpg" alt="Burger">
         <h3>Tasty Burger</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
       <div class="box">
         <span class="price">₹500 - ₹2100</span>
         <img src="../assets/images/food/p-2.jpg" alt="Cakes">
         <h3>Tasty Cakes</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
       <div class="box">
         <span class="price">₹50 - ₹400</span>
         <img src="../assets/images/food/p-3.jpg" alt="Sweets">
         <h3>Tasty Sweets</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
       <div class="box">
         <span class="price">₹30 - ₹600</span>
         <img src="../assets/images/food/p-4.jpg" alt="Cupcakes">
         <h3>Tasty Cupcakes</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
       <div class="box">
         <span class="price">₹70 - ₹350</span>
         <img src="../assets/images/food/p-5.jpg" alt="Cold Drinks">
         <h3>Cold Drinks</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
       <div class="box">
         <span class="price">₹80 - ₹500</span>
         <img src="../assets/images/food/p-6.jpg" alt="Ice Cream">
         <h3>Cold Ice Cream</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="fas fa-star"></i></div>
         <a href="#order" class="btn">Order Now</a>
       </div>
     </div>
@@ -240,13 +273,55 @@
   <section class="gallery" id="gallery">
     <h1 class="heading">Our Food <span>Gallery</span></h1>
     <div class="box-container">
-      <div class="box"><img src="../assets/images/food/g-1.jpg" alt=""><div class="content"><h3>Tasty Burger</h3><p>Absolutely delicious! Juicy and flavorful — easily the best burger I've had in a long time.</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/g-3.jpg" alt=""><div class="content"><h3>Tasty Food</h3><p>Breakfast here is amazing! Fluffy pancakes and fresh omelets — a great way to start the day!</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/g-4.jpg" alt=""><div class="content"><h3>TastyBites</h3><p>The cupcakes are absolutely delightful! Moist, flavorful, beautifully decorated — a little piece of heaven.</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/g-5.jpg" alt=""><div class="content"><h3>Tasty Sweets</h3><p>Simply divine. Every bite of the cake was moist and delicious. A real treat!</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/p-5.jpg" alt=""><div class="content"><h3>Cold Drinks</h3><p>Refreshing and full of flavor — the perfect complement to any meal.</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/g-8.jpg" alt=""><div class="content"><h3>Tasty Chocolate</h3><p>Never fail to satisfy my sweet cravings. Perfect for indulging or sharing with friends!</p><a href="#order" class="btn">Order Now</a></div></div>
-      <div class="box"><img src="../assets/images/food/p-6.jpg" alt=""><div class="content"><h3>Cold Ice Cream</h3><p>Creamy, smooth, and oh-so-satisfying. Hits the spot every time. Definitely a must-try!</p><a href="#order" class="btn">Order Now</a></div></div>
+      <div class="box"><img src="../assets/images/food/g-1.jpg" alt="">
+        <div class="content">
+          <h3>Tasty Burger</h3>
+          <p>Absolutely delicious! Juicy and flavorful — easily the best burger I've had in a long time.</p><a
+            href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/g-3.jpg" alt="">
+        <div class="content">
+          <h3>Tasty Food</h3>
+          <p>Breakfast here is amazing! Fluffy pancakes and fresh omelets — a great way to start the day!</p><a
+            href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/g-4.jpg" alt="">
+        <div class="content">
+          <h3>TastyBites</h3>
+          <p>The cupcakes are absolutely delightful! Moist, flavorful, beautifully decorated — a little piece of heaven.
+          </p><a href="#order" class="btn">Order Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/g-5.jpg" alt="">
+        <div class="content">
+          <h3>Tasty Sweets</h3>
+          <p>Simply divine. Every bite of the cake was moist and delicious. A real treat!</p><a href="#order"
+            class="btn">Order Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/p-5.jpg" alt="">
+        <div class="content">
+          <h3>Cold Drinks</h3>
+          <p>Refreshing and full of flavor — the perfect complement to any meal.</p><a href="#order" class="btn">Order
+            Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/g-8.jpg" alt="">
+        <div class="content">
+          <h3>Tasty Chocolate</h3>
+          <p>Never fail to satisfy my sweet cravings. Perfect for indulging or sharing with friends!</p><a href="#order"
+            class="btn">Order Now</a>
+        </div>
+      </div>
+      <div class="box"><img src="../assets/images/food/p-6.jpg" alt="">
+        <div class="content">
+          <h3>Cold Ice Cream</h3>
+          <p>Creamy, smooth, and oh-so-satisfying. Hits the spot every time. Definitely a must-try!</p><a href="#order"
+            class="btn">Order Now</a>
+        </div>
+      </div>
     </div>
   </section>
 
@@ -255,18 +330,24 @@
     <h1 class="heading">Customer <span>Reviews</span></h1>
     <div class="box-container">
       <div class="box">
-        <img src="../assets/images/food/pic1.png" alt="Akshaya"><h3>Akshaya</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <img src="../assets/images/food/pic1.png" alt="Akshaya">
+        <h3>Akshaya</h3>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="far fa-star"></i></div>
         <p>The Tasty Sweets are simply divine. Every bite of the cake was moist and delicious. A real treat!</p>
       </div>
       <div class="box">
-        <img src="../assets/images/food/pic2.webp" alt="Asferdheen"><h3>Asferdheen</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <img src="../assets/images/food/pic2.webp" alt="Asferdheen">
+        <h3>Asferdheen</h3>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="far fa-star"></i></div>
         <p>TastyBites breakfast is truly satisfying! Always hits the spot for me.</p>
       </div>
       <div class="box">
-        <img src="../assets/images/food/pic3.jpg" alt="Shree"><h3>Shree</h3>
-        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="far fa-star"></i></div>
+        <img src="../assets/images/food/pic3.jpg" alt="Shree">
+        <h3>Shree</h3>
+        <div class="stars"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i
+            class="fas fa-star"></i><i class="far fa-star"></i></div>
         <p>Ultimate comfort food to start your day with. Highly recommend!</p>
       </div>
     </div>
@@ -380,4 +461,5 @@
 
   <script src="food.js"></script>
 </body>
+
 </html>

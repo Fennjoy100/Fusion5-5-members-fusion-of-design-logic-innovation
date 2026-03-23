@@ -1076,6 +1076,14 @@ ul {
   cursor: not-allowed;
 }
 
+.seat.my-booked {
+  background: #ef4444;
+  border-color: #ef4444;
+  color: #fff;
+  cursor: not-allowed;
+  font-weight: bold;
+}
+
 .mv-seat-legend {
   display: flex;
   justify-content: center;

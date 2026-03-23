@@ -206,7 +206,7 @@ function openModal(key) {
   const modal = document.getElementById('languageModal');
   const langStep = document.getElementById('langStep');
   const seatStep = document.getElementById('seatStep');
-  
+
   // Add showtimes to modal
   const timeContainer = document.getElementById('showtimeOptions');
   if (timeContainer) {
@@ -238,12 +238,12 @@ let selectedTime = '';
 function showSeatStep() {
   const langRadio = document.querySelector('input[name="lang"]:checked');
   const timeRadio = document.querySelector('input[name="movieTime"]:checked');
-  
+
   if (!langRadio || !timeRadio) {
     showToast('Please select language and time', 'error');
     return;
   }
-  
+
   selectedLang = langRadio.value;
   selectedTime = timeRadio.value;
 
@@ -261,18 +261,34 @@ function renderSeats() {
   confirmBtn.disabled = true;
   confirmBtn.classList.remove('active');
 
+  // Get previously booked seats for this movie and time
+  const bookings = JSON.parse(localStorage.getItem('fusion5-bookings') || '[]');
+  const movie = movies[selectedMovie];
+  const movieName = movie ? (movie.names[currentLang] || movie.name) : '';
+  const myBookedSeats = bookings
+    .filter(b => b.movie === movieName && b.time === selectedTime)
+    .map(b => b.seat);
+
   // Generate 24 seats (3 rows x 8 seats)
   for (let i = 1; i <= 24; i++) {
     const seat = document.createElement('div');
     seat.className = 'seat available';
-    // Randomly occupy some seats, but keep at least 15 free for testing
-    const isOccupied = Math.random() < 0.25 && i > 15; 
-    if (isOccupied) {
-      seat.classList.replace('available', 'occupied');
-      seat.textContent = 'X';
-    } else {
+
+    // Check if this seat was previously booked by the user
+    if (myBookedSeats.includes(i)) {
+      seat.classList.replace('available', 'my-booked');
       seat.textContent = i;
-      seat.onclick = () => selectSeat(seat, i);
+      seat.title = 'Your booked seat';
+    } else {
+      // Randomly occupy some seats, but keep at least 15 free for testing
+      const isOccupied = Math.random() < 0.25 && i > 15;
+      if (isOccupied) {
+        seat.classList.replace('available', 'occupied');
+        seat.textContent = 'X';
+      } else {
+        seat.textContent = i;
+        seat.onclick = () => selectSeat(seat, i);
+      }
     }
     grid.appendChild(seat);
   }
@@ -315,7 +331,7 @@ function confirmTicket() {
       <div class="success-details">
         <p>Movie: <strong>${movie.names[currentLang] || movie.name}</strong></p>
         <p>Time: <span class="highlight-green">${selectedTime}</span></p>
-        <p>Seats: <span class="highlight-green">${selectedSeats.sort((a,b)=>a-b).join(', ')}</span></p>
+        <p>Seats: <span class="highlight-green">${selectedSeats.sort((a, b) => a - b).join(', ')}</span></p>
         <p>Language: <strong>${selectedLang}</strong></p>
       </div>
       <p class="final-wish">Enjoy your movie! 🎬</p>
@@ -483,7 +499,7 @@ function initVoiceSearch() {
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript.toLowerCase();
     const cleanQuery = transcript.replace('i want to see ', '').replace('show me ', '').replace('book ', '').replace('find ', '').replace('search ', '').trim();
-    
+
     // Check navigation
     const navMap = {
       'showing': '#nowShowing',
@@ -494,11 +510,11 @@ function initVoiceSearch() {
     };
 
     if (navMap[cleanQuery]) {
-       const target = document.querySelector(navMap[cleanQuery]);
-       if (target) {
-         target.scrollIntoView({ behavior: 'smooth' });
-         showToast(`Navigating to ${cleanQuery}...`);
-       }
+      const target = document.querySelector(navMap[cleanQuery]);
+      if (target) {
+        target.scrollIntoView({ behavior: 'smooth' });
+        showToast(`Navigating to ${cleanQuery}...`);
+      }
     } else {
       if (searchInput) {
         searchInput.value = cleanQuery;

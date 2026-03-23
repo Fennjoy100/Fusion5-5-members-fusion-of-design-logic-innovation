@@ -24,10 +24,10 @@ let currentLang = localStorage.getItem('fusion5-lang') || 'en';
 
 /* ── CART ── */
 function getCart() { return JSON.parse(localStorage.getItem('fusion5-cart') || '[]'); }
-function saveCart(arr) { 
-  localStorage.setItem('fusion5-cart', JSON.stringify(arr)); 
-  updateCartBadge(); 
-  renderCart(); 
+function saveCart(arr) {
+  localStorage.setItem('fusion5-cart', JSON.stringify(arr));
+  updateCartBadge();
+  renderCart();
   if (typeof currentFilteredProducts !== 'undefined') renderProducts(currentFilteredProducts);
 }
 
@@ -49,6 +49,7 @@ function addToCart(id) {
 function removeFromCart(id) {
   const cart = getCart().filter(i => i.id !== id);
   saveCart(cart);
+  renderCart();
   showToast('Item removed from cart');
 }
 
@@ -56,18 +57,20 @@ function changeQty(id, delta) {
   const cart = getCart();
   const itemIndex = cart.findIndex(i => i.id === id);
   if (itemIndex === -1) return;
-  
+
   const newQty = (cart[itemIndex].qty || 1) + delta;
-  
+
   if (newQty <= 0) {
     // Delete operation triggered via update
     cart.splice(itemIndex, 1);
     saveCart(cart);
+    renderCart();
     showToast('Item removed from cart');
   } else {
     // Update operation
     cart[itemIndex].qty = newQty;
     saveCart(cart);
+    renderCart();
   }
 }
 
@@ -94,24 +97,8 @@ function renderProducts(list) {
   const cart = getCart();
 
   list.forEach(p => {
-    const inCart = cart.find(i => i.id === p.id);
-    const qty = inCart ? inCart.qty : 0;
-    
-    let footerAction = '';
-    if (qty > 0) {
-      footerAction = `
-        <div class="inline-actions-wrap">
-          <div class="inline-qty-ctrl">
-            <button class="inline-qty-btn" onclick="changeQty('${p.id}', -1)">−</button>
-            <span class="inline-qty-val">${qty}</span>
-            <button class="inline-qty-btn" onclick="changeQty('${p.id}', 1)">+</button>
-          </div>
-          <button class="buy-now-btn" onclick="triggerBuy('${p.id}')">BUY</button>
-        </div>
-      `;
-    } else {
-      footerAction = `<button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Add to Cart</button>`;
-    }
+    // Always show "Add to Cart" button (remove "BUY" option)
+    const footerAction = `<button class="add-to-cart-btn" onclick="addToCart('${p.id}')">Add to Cart</button>`;
 
     const card = document.createElement('article');
     card.className = 'product-card reveal-card'; // Changed class name
@@ -162,6 +149,7 @@ function renderCart() {
 
   itemsEl.innerHTML = '';
   cart.forEach(item => {
+    const qty = item.qty || 1;
     const el = document.createElement('div');
     el.className = 'ec-cart-item';
     el.innerHTML = `
@@ -169,10 +157,10 @@ function renderCart() {
       <div class="ec-cart-item-info">
         <div class="ec-cart-item-name">${item.names[currentLang] || item.name}</div>
         <div class="ec-cart-item-price">₹${item.price.toLocaleString('en-IN')}</div>
-        <div class="ec-qty-ctrl">
-          <button class="ec-qty-btn dec" data-id="${item.id}">−</button>
-          <span class="ec-qty-val">${item.qty}</span>
-          <button class="ec-qty-btn inc" data-id="${item.id}">+</button>
+        <div class="ec-cart-item-qty">
+          <button class="ec-qty-btn ec-qty-dec" data-id="${item.id}">−</button>
+          <span class="ec-qty-value">${qty}</span>
+          <button class="ec-qty-btn ec-qty-inc" data-id="${item.id}">+</button>
         </div>
       </div>
       <button class="ec-remove-btn" data-id="${item.id}">✕</button>
@@ -180,14 +168,17 @@ function renderCart() {
     itemsEl.appendChild(el);
   });
 
-  itemsEl.querySelectorAll('.ec-qty-btn.dec').forEach(btn => {
-    btn.addEventListener('click', () => { changeQty(btn.dataset.id, -1); });
-  });
-  itemsEl.querySelectorAll('.ec-qty-btn.inc').forEach(btn => {
-    btn.addEventListener('click', () => { changeQty(btn.dataset.id, 1); });
-  });
   itemsEl.querySelectorAll('.ec-remove-btn').forEach(btn => {
     btn.addEventListener('click', () => { removeFromCart(btn.dataset.id); });
+  });
+
+  // Add quantity button handlers
+  itemsEl.querySelectorAll('.ec-qty-dec').forEach(btn => {
+    btn.addEventListener('click', () => { changeQty(btn.dataset.id, -1); });
+  });
+
+  itemsEl.querySelectorAll('.ec-qty-inc').forEach(btn => {
+    btn.addEventListener('click', () => { changeQty(btn.dataset.id, 1); });
   });
 
   const subtotal = cart.reduce((s, i) => s + i.price * (i.qty || 1), 0);
@@ -202,6 +193,7 @@ function openCart() {
   if (sb) sb.classList.add('open');
   if (ov) ov.classList.add('visible');
   document.body.style.overflow = 'hidden';
+  renderCart();
 }
 
 function closeCart() {
@@ -228,6 +220,8 @@ function initCartSlidebar() {
 }
 
 /* ── FILTER + SEARCH ── */
+let filterInitialized = false;
+
 function initFilter() {
   const searchInput = document.getElementById('searchInput');
   const checkboxes = document.getElementsByName("Product");
@@ -252,24 +246,29 @@ function initFilter() {
     if (query) {
       list = list.filter(p => {
         const nameInCurrentLang = (p.names[currentLang] || p.name).toLowerCase();
-        return nameInCurrentLang.includes(query) || 
-               p.cat.toLowerCase().includes(query) ||
-               p.tags.some(t => t.toLowerCase().includes(query));
+        return nameInCurrentLang.includes(query) ||
+          p.cat.toLowerCase().includes(query) ||
+          p.tags.some(t => t.toLowerCase().includes(query));
       });
     }
 
     renderProducts(list);
   }
 
-  checkboxes.forEach(box => {
-    box.addEventListener('change', applyFilter);
-  });
+  // Only add event listeners once
+  if (!filterInitialized) {
+    checkboxes.forEach(box => {
+      box.addEventListener('change', applyFilter);
+    });
 
-  if (searchInput) {
-    searchInput.addEventListener('input', applyFilter);
+    if (searchInput) {
+      searchInput.addEventListener('input', applyFilter);
+    }
+    filterInitialized = true;
   }
 
-  renderProducts(PRODUCTS);
+  // Re-render products with current language and filter state
+  applyFilter();
 }
 
 /* ── VOICE SEARCH ── */
@@ -299,12 +298,12 @@ function initVoiceSearch() {
   recognition.onresult = (event) => {
     const transcript = event.results[0][0].transcript.toLowerCase();
     const cleanQuery = transcript.replace('i need a ', '').replace('show me ', '').replace('find ', '').replace('search for ', '').trim();
-    
+
     if (searchInput) {
       searchInput.value = cleanQuery;
       // Filter list
-      const list = PRODUCTS.filter(p => 
-        p.name.toLowerCase().includes(cleanQuery) || 
+      const list = PRODUCTS.filter(p =>
+        p.name.toLowerCase().includes(cleanQuery) ||
         p.cat.toLowerCase().includes(cleanQuery) ||
         p.tags.some(t => t.toLowerCase().includes(cleanQuery))
       );
@@ -325,16 +324,16 @@ function initVoiceSearch() {
 }
 
 /* ── ORDER POPUP ── */
-window.triggerBuy = function(id) {
+window.triggerBuy = function (id) {
   const orderOverlay = document.getElementById('orderOverlay');
   const orderPopup = document.getElementById('orderPopup');
-  
+
   // Close cart slidebar if open
   closeCart();
-  
+
   if (orderOverlay) orderOverlay.classList.add('visible');
   if (orderPopup) orderPopup.classList.add('visible');
-  
+
   // Clear cart after successful direct buy
   saveCart([]);
 }
@@ -344,6 +343,12 @@ function initOrderPopup() {
   const orderOverlay = document.getElementById('orderOverlay');
   const orderPopup = document.getElementById('orderPopup');
   const backBtn = document.getElementById('backToShop');
+
+  // Function to close the popup
+  function closeOrderPopup() {
+    if (orderOverlay) orderOverlay.classList.remove('visible');
+    if (orderPopup) orderPopup.classList.remove('visible');
+  }
 
   if (checkoutBtn) {
     checkoutBtn.addEventListener('click', () => {
@@ -359,11 +364,36 @@ function initOrderPopup() {
     });
   }
 
+  // Close popup when clicking on the overlay background
+  if (orderOverlay) {
+    orderOverlay.addEventListener('click', (e) => {
+      if (e.target === orderOverlay) {
+        closeOrderPopup();
+      }
+    });
+  }
+
+  // Close popup when clicking on the overlay background
+  if (orderPopup) {
+    orderPopup.addEventListener('click', (e) => {
+      // Don't close if clicking on the back button
+      if (!e.target.closest('#backToShop')) {
+        closeOrderPopup();
+      }
+    });
+  }
+
+  // Back button closes popup and re-renders products with "Add to Cart" buttons
   if (backBtn) {
     backBtn.addEventListener('click', () => {
-      if (orderOverlay) orderOverlay.classList.remove('visible');
-      if (orderPopup) orderPopup.classList.remove('visible');
-      location.reload();
+      closeOrderPopup();
+      // Re-render products to show "Add to Cart" button (cart is already cleared)
+      if (typeof currentFilteredProducts !== 'undefined' && currentFilteredProducts.length > 0) {
+        renderProducts(currentFilteredProducts);
+      } else {
+        renderProducts(PRODUCTS);
+      }
+      showToast('Order placed successfully!', 'success');
     });
   }
 }
@@ -548,7 +578,7 @@ function initTTS() {
       });
 
       const utterance = new SpeechSynthesisUtterance(textToRead);
-      
+
       // Try to match voice to language
       const voices = window.speechSynthesis.getVoices();
       const langMap = { 'ta': 'ta-IN', 'ml': 'ml-IN', 'hi': 'hi-IN', 'es': 'es-ES', 'en': 'en-US' };
