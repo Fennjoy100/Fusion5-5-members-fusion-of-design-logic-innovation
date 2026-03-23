@@ -473,6 +473,34 @@
 /* RESPONSIVE */
 @media (max-width: 800px) {
   .ec-cart-slidebar { width: 100%; right: -100%; }
+  
+  /* Restoring the requested horizontal scrollbar for product grid on mobile */
+  .ec-grid {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 1.5rem;
+    overflow-x: auto;
+    padding-bottom: 1.5rem;
+    scroll-snap-type: x mandatory;
+  }
+  .product-card {
+    flex: 0 0 280px;
+    scroll-snap-align: start;
+  }
+  .ec-grid::-webkit-scrollbar {
+    height: 10px;
+  }
+  .ec-grid::-webkit-scrollbar-track {
+    background: var(--bg-card);
+    border-radius: 6px;
+  }
+  .ec-grid::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+  }
+  .ec-grid::-webkit-scrollbar-thumb:hover {
+    background: var(--gold);
+  }
 }
 
 /* INLINE QTY CTRL */
